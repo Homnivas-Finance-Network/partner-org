@@ -20,7 +20,6 @@
             --green: #10b981;
         }
 
-        /* Strict Box Sizing to kill horizontal scroll bugs */
         *, *::before, *::after { 
             margin: 0; 
             padding: 0; 
@@ -34,7 +33,7 @@
             font-size: 16px; 
             line-height: 1.6;
             -webkit-font-smoothing: antialiased; 
-            overflow-x: hidden; /* Hard lock to prevent horizontal blank space */
+            overflow-x: hidden; 
             width: 100%;
         }
 
@@ -54,7 +53,7 @@
             width: 100%; 
             max-width: 1200px; 
             margin: 0 auto; 
-            padding: 0 24px; /* Fixed, safe padding for all devices */
+            padding: 0 24px; 
         }
         
         .section { padding: 100px 0; }
@@ -95,7 +94,7 @@
         .btn {
             display: inline-flex; justify-content: center; align-items: center;
             padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; 
-            transition: all 0.2s ease; cursor: pointer; border: none;
+            transition: all 0.2s ease; cursor: pointer; border: none; text-align: center;
         }
         .btn-gold { background: var(--gold); color: #000; }
         .btn-gold:hover { background: #dca506; transform: translateY(-2px); }
@@ -116,7 +115,14 @@
         /* --- HERO --- */
         .hero { padding: 160px 0 80px; text-align: center; }
         .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; }
-        .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; font-size: 18px; }
+        .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 18px; }
+        
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 32px;
+        }
 
         /* --- GRIDS & CARDS --- */
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -150,9 +156,27 @@
         .vs-val { font-family: 'Outfit'; font-size: 24px; font-weight: 700; color: #fff; }
 
         /* --- TIMELINE --- */
-        .timeline { margin-top: 40px; border-left: 2px solid var(--border-subtle); padding-left: 32px; display: flex; flex-direction: column; gap: 40px; }
+        .timeline { 
+            margin-top: 40px; 
+            margin-left: 12px; /* Adds space so the dot doesn't hit the screen edge */
+            border-left: 2px solid var(--border-subtle); 
+            padding-left: 24px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 40px; 
+        }
         .step { position: relative; }
-        .step::before { content: ''; position: absolute; left: -40px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 3px solid var(--bg-deep); }
+        .step::before { 
+            content: ''; 
+            position: absolute; 
+            left: -31px; /* Perfectly centers the dot on the border */
+            top: 4px; 
+            width: 12px; 
+            height: 12px; 
+            border-radius: 50%; 
+            background: var(--gold); 
+            border: 3px solid var(--bg-deep); 
+        }
         .step h3 { font-size: 20px; margin-bottom: 6px; }
 
         /* --- FORM --- */
@@ -195,26 +219,34 @@
 
         /* --- STRICT MOBILE OPTIMIZATION --- */
         @media (max-width: 900px) {
-            .nav-links { display: none; } /* Hide links on mobile for simplicity, keep CTA */
+            .nav-links { display: none; }
             
-            .section { padding: 80px 0; }
-            .hero { padding: 120px 0 40px; }
+            .section { padding: 60px 0; }
+            .hero { padding: 100px 0 40px; }
             
-            /* Force grids to single column, ensure no overflow */
+            h2 { font-size: 28px !important; margin-bottom: 24px !important; }
+            
+            .hero-actions { 
+                flex-direction: column; /* Stacks buttons properly */
+                gap: 16px; 
+            }
+            .hero-actions .btn { width: 100%; } /* Makes buttons full width safely */
+
+            /* Collapse all grids to 1 column safely */
             .grid-3, .grid-2, .form-grid, .footer-grid { 
                 grid-template-columns: 1fr; 
-                gap: 24px; 
+                gap: 20px; 
             }
             .span-2, .col-span-2 { grid-column: span 1; }
             
-            .calc-box { padding: 32px 24px; }
+            /* Responsive adjustments for cards */
+            .card { padding: 24px; }
+            .card h3 { font-size: 20px; }
+            
+            .calc-box { padding: 24px; }
             .vs-item { flex-direction: column; align-items: flex-start; gap: 8px; }
             
-            .timeline { padding-left: 24px; }
-            .step::before { left: -32px; }
-            
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-            .btn { width: 100%; }
             .btn-header { width: auto; padding: 10px 20px; font-size: 14px; }
         }
     </style>
@@ -238,12 +270,15 @@
             <div class="tag">Partner Program</div>
             <h1>Salary gone by<br>the <span class="gold-text">5th of the month?</span></h1>
             <p>Multiple high-interest EMIs are eating your income alive. Homnivas steps in, pays them off, and gives you back control with just 1 simple EMI.</p>
-            <a href="#apply" class="btn btn-gold" style="margin-right: 12px;">Start Your Rescue</a>
-            <a href="#calculator" class="btn btn-outline">See The Math</a>
+            
+            <div class="hero-actions">
+                <a href="#apply" class="btn btn-gold">Start Your Rescue</a>
+                <a href="#calculator" class="btn btn-outline">See The Math</a>
+            </div>
         </section>
 
         <section id="problem" class="section container">
-            <h2 style="font-size: 32px; margin-bottom: 32px;">The Debt Trap Architecture</h2>
+            <h2>The Debt Trap Architecture</h2>
             <div class="grid-3">
                 <div class="card span-2">
                     <span class="icon">📈</span>
@@ -270,7 +305,7 @@
         <section id="calculator" class="section container">
             <div class="card calc-box grid-2">
                 <div>
-                    <h2 style="font-size: 32px; margin-bottom: 16px;">See the Impact.</h2>
+                    <h2>See the Impact.</h2>
                     <p style="color: var(--text-muted); font-size: 16px;">Stop paying 5 lenders at 30%+ interest. Drag the slider to see how we cut your monthly burden.</p>
                     
                     <div class="slider-wrap">
@@ -305,7 +340,7 @@
             <div class="grid-2">
                 
                 <div>
-                    <h2 style="font-size: 32px;">How We Free You</h2>
+                    <h2>How We Free You</h2>
                     <div class="timeline">
                         <div class="step">
                             <h3>1. Transparent Evaluation</h3>
@@ -323,7 +358,7 @@
                 </div>
 
                 <div class="card" id="apply">
-                    <h2 style="font-size: 28px; margin-bottom: 8px;">Break the Trap</h2>
+                    <h2 style="margin-bottom: 8px;">Break the Trap</h2>
                     <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 24px;">100% Secure & Confidential application.</p>
                     
                     <form class="form-grid" onsubmit="event.preventDefault();">
@@ -337,7 +372,7 @@
                             <option value="high" style="background: #121824;">Above ₹5 Lakhs</option>
                         </select>
                         
-                        <button type="submit" class="btn btn-gold col-span-2" style="margin-top: 8px;">Apply for Rescue</button>
+                        <button type="submit" class="btn btn-gold col-span-2" style="margin-top: 8px; width: 100%;">Apply for Rescue</button>
                     </form>
                 </div>
                 
@@ -380,7 +415,6 @@
     </footer>
 
     <script>
-        // Minimalist Calculator Logic
         const slider = document.getElementById("loanSlider");
         const loanText = document.getElementById("loanText");
         const oldEmi = document.getElementById("oldEmi");
