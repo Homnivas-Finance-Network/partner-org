@@ -3,301 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homnivas Partner Program | Escape the EMI Trap</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Homnivas Partner | Financial Rescue</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* --- CORE VARIABLES --- */
+        /* --- CORE SYSTEM --- */
         :root {
-            --bg-deep: #030508;
-            --bg-glass: rgba(15, 23, 42, 0.6);
+            --bg-deep: #050505; /* True minimal black */
+            --bg-card: #0d0d0d;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(234, 179, 8, 0.4);
             --gold: #eab308;
-            --gold-glow: rgba(234, 179, 8, 0.15);
-            --red-glow: rgba(239, 68, 68, 0.15);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-main: #f3f4f6;
+            --text-muted: #8b8d91;
+            --red: #ef4444;
+            --green: #10b981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
+            background-color: var(--bg-deep); color: var(--text-main);
+            font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.5;
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
         }
 
-        h1, h2, h3, .font-heading { font-family: 'Outfit', sans-serif; }
-
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        h1, h2, h3 { font-family: 'Outfit', sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
         
-        /* --- UTILITIES & EFFECTS --- */
-        .glass-card {
-            background: var(--bg-glass);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glow-blob {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--gold);
-            filter: blur(150px);
-            opacity: 0.15;
-            z-index: -1;
-            border-radius: 50%;
-        }
-
+        .container { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 80px 0; }
+        
+        /* --- TYPOGRAPHY & TAGS --- */
         .gold-text { color: var(--gold); }
-        .tagline { display: inline-block; padding: 8px 16px; border: 1px solid var(--gold); border-radius: 50px; color: var(--gold); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+        .tag { display: inline-flex; align-items: center; padding: 4px 12px; border: 1px solid var(--border-subtle); border-radius: 100px; color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; background: rgba(255,255,255,0.02); }
+        .tag::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; margin-right: 8px; box-shadow: 0 0 8px var(--gold); }
 
         /* --- BUTTONS --- */
         .btn {
             display: inline-flex; justify-content: center; align-items: center;
-            padding: 16px 32px; border-radius: 12px; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.1rem; text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: none;
+            padding: 12px 24px; border-radius: 8px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s ease; cursor: pointer; border: 1px solid transparent; width: max-content;
         }
-        .btn-glow {
-            background: var(--gold); color: #000; box-shadow: 0 0 20px var(--gold-glow);
+        .btn-primary {
+            background: var(--text-main); color: #000;
         }
-        .btn-glow:hover {
-            transform: translateY(-3px) scale(1.02); box-shadow: 0 0 40px rgba(234, 179, 8, 0.4);
+        .btn-primary:hover { background: #fff; transform: translateY(-1px); }
+        .btn-gold {
+            background: rgba(234, 179, 8, 0.1); color: var(--gold); border-color: rgba(234, 179, 8, 0.2);
         }
+        .btn-gold:hover { background: rgba(234, 179, 8, 0.15); border-color: var(--gold); }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center; position: relative; padding-top: 80px;
+        /* --- CARDS --- */
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 24px; transition: border-color 0.2s;
         }
-        .hero h1 { font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px; }
-        .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin-bottom: 40px; }
+        .card:hover { border-color: var(--border-hover); }
 
-        /* --- BENTO BOX (THE PROBLEM) --- */
-        .section-padding { padding: 120px 0; }
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 24px; margin-top: 60px;
-        }
-        .bento-item { transition: transform 0.4s ease; }
-        .bento-item:hover { transform: translateY(-5px); border-color: rgba(234, 179, 8, 0.3); }
-        .span-2 { grid-column: span 2; }
-        .span-row-2 { grid-row: span 2; }
+        /* --- HERO --- */
+        .hero { padding: 100px 0 60px; text-align: center; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 16px; }
+        .hero p { color: var(--text-muted); max-width: 500px; margin: 0 auto 32px; font-size: 16px; }
 
-        .bento-item h3 { font-size: 1.8rem; margin-bottom: 16px; }
+        /* --- TIGHT BENTO GRID --- */
+        .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .bento-large { grid-column: span 2; }
+        .bento h3 { font-size: 20px; margin-bottom: 8px; }
+        .bento p { color: var(--text-muted); font-size: 14px; }
+        .icon { font-size: 24px; margin-bottom: 16px; display: block; }
+
+        /* --- CALCULATOR --- */
+        .calc-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .calc-controls { padding-right: 20px; }
+        .slider-wrap { margin: 30px 0; }
+        .slider-labels { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 500; font-size: 14px; }
         
-        /* --- INTERACTIVE SLIDER SECTION --- */
-        .calculator-ui {
-            background: linear-gradient(145deg, rgba(15,23,42,0.8) 0%, rgba(5,7,10,0.9) 100%);
-            border: 1px solid var(--border-glass);
-            border-radius: 32px; padding: 60px; margin-top: 60px;
-        }
-        .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .slider-container { margin: 40px 0; }
-        input[type=range] {
-            -webkit-appearance: none; width: 100%; background: transparent;
-        }
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%; height: 8px; cursor: pointer; background: #1e293b; border-radius: 4px;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            height: 24px; width: 24px; border-radius: 50%; background: var(--gold); cursor: pointer; -webkit-appearance: none; margin-top: -8px; box-shadow: 0 0 15px var(--gold);
-        }
-        .vs-box { padding: 24px; border-radius: 16px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); }
-        .vs-red { border-left: 4px solid #ef4444; }
-        .vs-green { border-left: 4px solid #22c55e; }
-        .huge-number { font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 800; }
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; background: #222; border-radius: 2px; }
+        input[type=range]::-webkit-slider-thumb { height: 16px; width: 16px; border-radius: 50%; background: var(--gold); cursor: pointer; -webkit-appearance: none; margin-top: -6px; }
 
-        /* --- THE PROCESS (STEPS) --- */
-        .process-list { list-style: none; counter-reset: my-awesome-counter; position: relative; margin-top: 60px; }
-        .process-list::before {
-            content: ''; position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--gold), transparent);
-        }
-        .process-list li {
-            position: relative; padding-left: 80px; margin-bottom: 60px;
-        }
-        .process-list li::before {
-            counter-increment: my-awesome-counter; content: "0" counter(my-awesome-counter);
-            position: absolute; left: 0; top: 0; width: 50px; height: 50px; border-radius: 50%; background: var(--bg-deep); border: 2px solid var(--gold); display: flex; justify-content: center; align-items: center; font-family: 'Outfit'; font-weight: 800; color: var(--gold); z-index: 1;
-        }
-        .process-list h3 { font-size: 2rem; margin-bottom: 12px; }
+        .vs-stack { display: flex; flex-direction: column; gap: 12px; }
+        .vs-item { padding: 16px 20px; border-radius: 8px; border: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); }
+        .vs-red { border-left: 3px solid var(--red); }
+        .vs-green { border-left: 3px solid var(--green); background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2); }
+        .vs-title { font-size: 12px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
+        .vs-val { font-family: 'Outfit'; font-size: 24px; font-weight: 700; }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 992px) {
-            .bento-grid { grid-template-columns: 1fr; }
-            .span-2, .span-row-2 { grid-column: span 1; grid-row: span 1; }
-            .calc-grid { grid-template-columns: 1fr; gap: 40px; }
-            .calculator-ui { padding: 40px 20px; }
+        /* --- TIMELINE --- */
+        .timeline { margin-top: 40px; border-left: 1px solid var(--border-subtle); padding-left: 24px; display: flex; flex-direction: column; gap: 32px; }
+        .step { position: relative; }
+        .step::before { content: ''; position: absolute; left: -29px; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); border: 2px solid var(--bg-deep); }
+        .step h3 { font-size: 18px; margin-bottom: 4px; }
+        .step p { font-size: 14px; color: var(--text-muted); }
+
+        /* --- FORM --- */
+        .tight-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+        .input-base { padding: 12px 16px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: white; font-family: 'Inter'; font-size: 14px; width: 100%; outline: none; transition: border 0.2s; }
+        .input-base:focus { border-color: var(--gold); }
+        .full-width { grid-column: span 2; }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 768px) {
+            .section { padding: 50px 0; }
+            .hero { padding: 60px 0 40px; }
+            .bento { grid-template-columns: 1fr; gap: 12px; }
+            .bento-large { grid-column: span 1; }
+            
+            .calc-wrapper { grid-template-columns: 1fr; gap: 32px; }
+            .calc-controls { padding-right: 0; }
+            .vs-item { flex-direction: column; align-items: flex-start; gap: 8px; padding: 16px; }
+            
+            .tight-form { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .btn { width: 100%; }
         }
-        
-        /* Fade in animation classes */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <div class="glow-blob" style="top: -10%; left: -10%;"></div>
-    <div class="glow-blob" style="bottom: 20%; right: -10%; background: #22c55e; opacity: 0.1;"></div>
-
-    <section class="hero">
-        <div class="container reveal">
-            <span class="tagline">The Partner Program</span>
-            <h1>Salary Gone by<br>the <span class="gold-text">5th of the Month?</span></h1>
-            <p>You took out instant loans for emergencies. Now, multiple high-interest EMIs are eating your income alive. Homnivas steps in, pays them all off, and gives you back your peace of mind with just <strong>1 simple EMI</strong>.</p>
-            <a href="#apply" class="btn btn-glow">Break the Trap Today</a>
-        </div>
+    <section class="hero container">
+        <div class="tag">Partner Program</div>
+        <h1>Salary gone by<br>the <span class="gold-text">5th of the month?</span></h1>
+        <p>Multiple high-interest EMIs are eating your income alive. Homnivas steps in, pays them off, and gives you back control with just 1 simple EMI.</p>
+        <a href="#apply" class="btn btn-primary">Start Your Rescue</a>
     </section>
 
-    <section class="section-padding">
-        <div class="container">
-            <h2 style="font-size: 3rem; text-align: center; margin-bottom: 16px;" class="reveal">The Anatomy of a Debt Trap</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;" class="reveal">How good people with good CIBIL scores get stuck.</p>
-
-            <div class="bento-grid">
-                <div class="glass-card bento-item span-2 reveal">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">📈</div>
-                    <h3>The Good CIBIL Curse</h3>
-                    <p>Because your CIBIL was excellent, banks and apps threw money at you. What started as an instant emergency loan quickly multiplied. Now, you have 5 different apps auto-debiting your account, creating absolute chaos every month.</p>
-                </div>
-                <div class="glass-card bento-item span-row-2 reveal" style="background: linear-gradient(180deg, rgba(239, 68, 68, 0.05) 0%, var(--bg-glass) 100%);">
-                    <div style="font-size: 3rem; margin-bottom: 20px;">🚫</div>
-                    <h3>The Dead End</h3>
-                    <p style="margin-bottom: 20px;">You've asked friends. You've asked family. But no one can lend you the lump sum needed to clear this mess. </p>
-                    <p>You feel completely trapped, waiting for the recovery agent's phone call.</p>
-                </div>
-                <div class="glass-card bento-item reveal">
-                    <h3 style="color: #ef4444;">36%+ Interest</h3>
-                    <p>App loans and credit cards charge predatory rates. You are only paying the interest, never touching the principal amount.</p>
-                </div>
-                <div class="glass-card bento-item reveal">
-                    <h3>0 Bank Balance</h3>
-                    <p>The joy of payday lasts exactly 24 hours before the EMIs trigger. Your salary belongs to the bank, not you.</p>
-                </div>
+    <section class="section container">
+        <h2 style="font-size: 24px; margin-bottom: 24px;">The Debt Trap Architecture</h2>
+        <div class="bento">
+            <div class="card bento-large">
+                <span class="icon">📈</span>
+                <h3>The Good CIBIL Curse</h3>
+                <p>Because your CIBIL was excellent, banks threw money at you. What started as an emergency loan multiplied. Now, 5 different apps auto-debit your account, creating absolute chaos.</p>
+            </div>
+            <div class="card" style="background: rgba(239, 68, 68, 0.02);">
+                <span class="icon">🚫</span>
+                <h3 style="color: var(--red);">The Dead End</h3>
+                <p>Friends and family can't lend the lump sum needed. You are trapped.</p>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--red); font-size: 28px;">36%+</h3>
+                <p style="margin-top: 4px;">App loans charge predatory rates. You only pay interest, never principal.</p>
+            </div>
+            <div class="card bento-large">
+                <span class="icon">🏦</span>
+                <h3>0 Bank Balance</h3>
+                <p>The joy of payday lasts exactly 24 hours before the EMIs trigger. Your hard-earned salary belongs to the bank, not you.</p>
             </div>
         </div>
     </section>
 
-    <section class="section-padding" style="position: relative; z-index: 10;">
-        <div class="container reveal">
-            <div class="calculator-ui">
-                <div class="calc-grid">
+    <section class="section container">
+        <div class="card calc-wrapper">
+            <div class="calc-controls">
+                <h2 style="font-size: 28px; margin-bottom: 12px;">See the Impact.</h2>
+                <p style="color: var(--text-muted); font-size: 14px;">Stop paying 5 lenders at 30%+ interest. Drag the slider to see how we cut your monthly burden.</p>
+                
+                <div class="slider-wrap">
+                    <div class="slider-labels">
+                        <span style="color: var(--text-muted);">Total Debt</span>
+                        <span class="gold-text" id="loanText" style="font-family: 'Outfit'; font-size: 18px;">₹5,00,000</span>
+                    </div>
+                    <input type="range" id="loanSlider" min="100000" max="1500000" step="50000" value="500000">
+                </div>
+            </div>
+
+            <div class="vs-stack">
+                <div class="vs-item vs-red">
                     <div>
-                        <span class="tagline" style="border-color: #22c55e; color: #22c55e;">The Solution</span>
-                        <h2 style="font-size: 3rem; margin-bottom: 20px;">See the Homnivas Impact.</h2>
-                        <p>Stop paying 5 different lenders at 30%+ interest. We consolidate your debt into one single file. Drag the slider to see how we cut your monthly burden.</p>
-                        
-                        <div class="slider-container">
-                            <label style="display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600;">
-                                <span>Total Loan Outstanding</span>
-                                <span class="gold-text" id="loanAmountText">₹5,00,000</span>
-                            </label>
-                            <input type="range" id="loanSlider" min="100000" max="1500000" step="50000" value="500000">
-                        </div>
+                        <div class="vs-title">Chaotic App Loans</div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Multiple dates, high stress</div>
                     </div>
-
-                    <div style="display: flex; flex-direction: column; gap: 20px;">
-                        <div class="vs-box vs-red">
-                            <p style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase;">Current Chaotic EMIs (App Loans + CC)</p>
-                            <div class="huge-number" style="color: #ef4444;" id="oldEmi">₹28,500<span style="font-size: 1rem; color: #94a3b8;">/mo</span></div>
-                            <p style="font-size: 0.85rem; margin-top: 8px;">Across 4-5 different dates</p>
-                        </div>
-                        <div class="vs-box vs-green" style="background: rgba(34, 197, 94, 0.1);">
-                            <p style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; color: #22c55e;">Homnivas 1-EMI Partner Plan</p>
-                            <div class="huge-number" style="color: #22c55e;" id="newEmi">₹14,200<span style="font-size: 1rem; color: #22c55e;">/mo</span></div>
-                            <p style="font-size: 0.85rem; margin-top: 8px;">Normal interest, one single date</p>
-                        </div>
+                    <div class="vs-val" style="color: var(--red);" id="oldEmi">₹28,500<span style="font-size: 14px; font-weight: 500; color: var(--text-muted);">/mo</span></div>
+                </div>
+                <div class="vs-item vs-green">
+                    <div>
+                        <div class="vs-title" style="color: var(--green);">Homnivas 1-EMI</div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Normal interest, one date</div>
                     </div>
+                    <div class="vs-val" style="color: var(--green);" id="newEmi">₹14,200<span style="font-size: 14px; font-weight: 500; color: var(--green);">/mo</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-padding">
-        <div class="container reveal">
-            <h2 style="font-size: 3.5rem; margin-bottom: 60px;">How We Free You.</h2>
-            <div style="max-width: 800px;">
-                <ul class="process-list">
-                    <li>
-                        <h3>The Transparent Evaluation</h3>
-                        <p>You apply securely. We don't judge your situation; we analyze the math. We calculate exactly how much you owe across all credit cards, personal loans, and high-interest apps.</p>
-                    </li>
-                    <li>
-                        <h3>The Homnivas Takeover</h3>
-                        <p>Once approved, you don't have to deal with recovery agents anymore. Homnivas steps in as your financial partner and directly clears all your existing high-interest debts with the banks and apps.</p>
-                    </li>
-                    <li>
-                        <h3>The 1-EMI Setup</h3>
-                        <p>Your messy web of loans is instantly destroyed. We replace it with one single loan from Homnivas at a standard, fair rate of interest.</p>
-                    </li>
-                    <li>
-                        <h3>You Keep Your Salary</h3>
-                        <p>You now pay just ONE simple EMI to us every month. Your credit score begins to heal, the harassment stops, and you finally have money left in your bank account.</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="apply" class="section-padding" style="background: var(--bg-glass); border-top: 1px solid var(--border-glass);">
-        <div class="container" style="text-align: center; max-width: 800px;">
-            <h2 style="font-size: 4rem; margin-bottom: 24px;">Your Life, Unlocked.</h2>
-            <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px;">Don't let another month's salary vanish. Apply for the Homnivas Partner Program and let us negotiate your freedom.</p>
+    <section class="section container" id="apply">
+        <div class="bento" style="grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
             
-            <form style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; margin-bottom: 40px;" onsubmit="event.preventDefault();">
-                <input type="text" placeholder="Full Name" style="padding: 16px; border-radius: 12px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); color: white; width: 100%; outline: none;" required>
-                <input type="tel" placeholder="Phone Number" style="padding: 16px; border-radius: 12px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); color: white; width: 100%; outline: none;" required>
-                <select style="grid-column: span 2; padding: 16px; border-radius: 12px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); color: white; width: 100%; outline: none; appearance: none;" required>
-                    <option value="" disabled selected>Total Outstanding Debt Amount</option>
-                    <option value="under-1L">Under ₹1 Lakh</option>
-                    <option value="1L-5L">₹1 Lakh - ₹5 Lakhs</option>
-                    <option value="over-5L">Above ₹5 Lakhs</option>
-                </select>
-                <button type="submit" class="btn btn-glow" style="grid-column: span 2; width: 100%;">Submit & Get Rescued</button>
-            </form>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">© 2026 Homnivas Finance Networks. 100% Secure & Confidential.</p>
+            <div>
+                <h2 style="font-size: 28px;">How We Free You</h2>
+                <div class="timeline">
+                    <div class="step">
+                        <h3>1. Transparent Evaluation</h3>
+                        <p>We analyze your math, not your mistakes. We calculate exactly what you owe.</p>
+                    </div>
+                    <div class="step">
+                        <h3>2. The Takeover</h3>
+                        <p>Homnivas steps in and directly clears your high-interest debts with the banks.</p>
+                    </div>
+                    <div class="step">
+                        <h3>3. You Keep Your Salary</h3>
+                        <p>Your messy web is destroyed. You pay ONE simple EMI to us at a fair rate.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 32px;">
+                <h2 style="font-size: 24px; margin-bottom: 8px;">Break the Trap</h2>
+                <p style="font-size: 14px; color: var(--text-muted);">100% Secure & Confidential.</p>
+                
+                <form class="tight-form" onsubmit="event.preventDefault();">
+                    <input type="text" class="input-base full-width" placeholder="Full Name" required>
+                    <input type="tel" class="input-base" placeholder="Phone Number" required>
+                    <select class="input-base" required style="appearance: none;">
+                        <option value="" disabled selected>Debt Amount</option>
+                        <option value="low">Under ₹1 Lakh</option>
+                        <option value="mid">₹1L - ₹5L</option>
+                        <option value="high">Above ₹5 Lakhs</option>
+                    </select>
+                    <button type="submit" class="btn btn-gold full-width" style="margin-top: 8px;">Apply for Rescue</button>
+                </form>
+            </div>
+            
         </div>
     </section>
 
     <script>
-        // Smooth Scroll Reveal Animation
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Trigger on load
-
-        // Calculator Logic
+        // Minimalist Calculator Logic
         const slider = document.getElementById("loanSlider");
-        const loanText = document.getElementById("loanAmountText");
+        const loanText = document.getElementById("loanText");
         const oldEmi = document.getElementById("oldEmi");
         const newEmi = document.getElementById("newEmi");
-
-        // Format numbers to Indian Rupee standard
-        const formatter = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+        const fmt = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
 
         slider.oninput = function() {
-            const principal = parseInt(this.value);
-            loanText.innerHTML = formatter.format(principal);
-            
-            // Dummy logic: Old chaos EMI is roughly 5.7% of principal per month (crazy app loans)
-            // New Homnivas EMI is roughly 2.8% of principal (standardized longer tenure)
-            const badEmiValue = principal * 0.057;
-            const goodEmiValue = principal * 0.0284;
-
-            oldEmi.innerHTML = formatter.format(badEmiValue) + '<span style="font-size: 1rem; color: #94a3b8;">/mo</span>';
-            newEmi.innerHTML = formatter.format(goodEmiValue) + '<span style="font-size: 1rem; color: #22c55e;">/mo</span>';
+            const val = parseInt(this.value);
+            loanText.innerHTML = fmt.format(val);
+            oldEmi.innerHTML = fmt.format(val * 0.057) + '<span style="font-size: 14px; font-weight: 500; color: #8b8d91;">/mo</span>';
+            newEmi.innerHTML = fmt.format(val * 0.0284) + '<span style="font-size: 14px; font-weight: 500; color: #10b981;">/mo</span>';
         }
     </script>
 </body>
