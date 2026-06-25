@@ -1,378 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homnivas Partner Program | Escape the EMI Trap</title>
-    <meta name="description" content="The Homnivas Partner Program merges your high-interest emergency loans and credit card bills into one simple, manageable EMI. Take control of your salary today.">
+    <meta name="description" content="Merge your high-interest emergency loans and credit card bills into one simple EMI.">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* --- GLOBAL RESET & BRAND COLORS --- */
-        :root {
-            --bg-deep: #0a0f18;        
-            --bg-card: #121824;        
-            --border-subtle: #1e2736;  
-            --gold: #eab308;           
-            --text-main: #ffffff;      
-            --text-muted: #94a3b8;     
-            --red: #ef4444;
-            --green: #10b981;
-        }
-
-        *, *::before, *::after { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
-        
-        html, body {
-            background-color: var(--bg-deep); 
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif; 
-            font-size: 16px; 
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased; 
-            overflow-x: hidden; 
-            width: 100%;
-        }
-
-        h1, h2, h3, h4 { 
-            font-family: 'Outfit', sans-serif; 
-            font-weight: 700; 
-            line-height: 1.2; 
-            letter-spacing: -0.02em; 
-            color: var(--text-main); 
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        
-        /* --- LAYOUT CONTAINERS --- */
-        .container { 
-            width: 100%; 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 24px; 
-        }
-        
-        .section { padding: 100px 0; }
-        
-        /* --- HEADER & NAVIGATION --- */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 15, 24, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-subtle);
-            z-index: 1000;
-            padding: 16px 0;
-        }
-
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-        .logo span { color: var(--gold); }
-
-        .nav-links { display: flex; gap: 32px; align-items: center; }
-        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
-        .nav-links a:hover { color: var(--gold); }
-
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-flex; justify-content: center; align-items: center;
-            padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; 
-            transition: all 0.2s ease; cursor: pointer; border: none; text-align: center;
-        }
-        .btn-gold { background: var(--gold); color: #000; }
-        .btn-gold:hover { background: #dca506; transform: translateY(-2px); }
-        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-subtle); }
-        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-        .tag { 
-            display: inline-flex; align-items: center; padding: 6px 16px; 
-            border: 1px solid var(--border-subtle); border-radius: 100px; 
-            color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; 
-            letter-spacing: 1px; margin-bottom: 24px; background: rgba(0,0,0,0.3); 
-        }
-        .tag::before { 
-            content: ''; width: 6px; height: 6px; background: var(--gold); 
-            border-radius: 50%; margin-right: 10px; box-shadow: 0 0 8px var(--gold); 
-        }
-
-        /* --- HERO --- */
-        .hero { padding: 160px 0 80px; text-align: center; }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; }
-        .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 18px; }
-        
-        .hero-actions {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-top: 32px;
-        }
-
-        /* --- GRIDS & CARDS --- */
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-        .span-2 { grid-column: span 2; }
-
-        .card {
-            background: var(--bg-card); 
-            border: 1px solid var(--border-subtle); 
-            border-radius: 16px; 
-            padding: 32px; 
-        }
-
-        .card h3 { font-size: 22px; margin-bottom: 12px; }
-        .card p { color: var(--text-muted); font-size: 15px; }
-        .icon { font-size: 28px; margin-bottom: 16px; display: block; }
-
-        /* --- CALCULATOR UI --- */
-        .calc-box { padding: 48px; }
-        .slider-wrap { margin: 40px 0; }
-        .slider-labels { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 500; }
-        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
-        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; background: #0a0f18; border-radius: 3px; border: 1px solid var(--border-subtle); }
-        input[type=range]::-webkit-slider-thumb { height: 20px; width: 20px; border-radius: 50%; background: var(--gold); cursor: pointer; -webkit-appearance: none; margin-top: -8px; }
-
-        .vs-stack { display: flex; flex-direction: column; gap: 16px; }
-        .vs-item { padding: 20px; border-radius: 12px; border: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2); }
-        .vs-red { border-left: 4px solid var(--red); }
-        .vs-green { border-left: 4px solid var(--green); background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2); }
-        .vs-title { font-size: 12px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
-        .vs-val { font-family: 'Outfit'; font-size: 24px; font-weight: 700; color: #fff; }
-
-        /* --- TIMELINE --- */
-        .timeline { 
-            margin-top: 40px; 
-            margin-left: 12px; /* Adds space so the dot doesn't hit the screen edge */
-            border-left: 2px solid var(--border-subtle); 
-            padding-left: 24px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 40px; 
-        }
-        .step { position: relative; }
-        .step::before { 
-            content: ''; 
-            position: absolute; 
-            left: -31px; /* Perfectly centers the dot on the border */
-            top: 4px; 
-            width: 12px; 
-            height: 12px; 
-            border-radius: 50%; 
-            background: var(--gold); 
-            border: 3px solid var(--bg-deep); 
-        }
-        .step h3 { font-size: 20px; margin-bottom: 6px; }
-
-        /* --- FORM --- */
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-        .input-field { 
-            padding: 14px 16px; border-radius: 8px; background: rgba(0,0,0,0.2); 
-            border: 1px solid var(--border-subtle); color: #fff; font-family: 'Inter'; 
-            font-size: 15px; width: 100%; outline: none; 
-        }
-        .input-field:focus { border-color: var(--gold); }
-        .col-span-2 { grid-column: span 2; }
-
-        /* --- FOOTER --- */
-        .site-footer {
-            border-top: 1px solid var(--border-subtle);
-            background: #070b12;
-            padding: 60px 0 40px;
-            margin-top: 60px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-        }
-        .footer-col h4 { font-size: 18px; margin-bottom: 20px; }
-        .footer-col p { color: var(--text-muted); font-size: 14px; max-width: 300px; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: var(--text-muted); font-size: 14px; transition: color 0.2s; }
-        .footer-links a:hover { color: var(--gold); }
-        .footer-bottom {
-            border-top: 1px solid var(--border-subtle);
-            padding-top: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        /* --- STRICT MOBILE OPTIMIZATION --- */
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            
-            .section { padding: 60px 0; }
-            .hero { padding: 100px 0 40px; }
-            
-            h2 { font-size: 28px !important; margin-bottom: 24px !important; }
-            
-            .hero-actions { 
-                flex-direction: column; /* Stacks buttons properly */
-                gap: 16px; 
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#0a0f18',
+                        card: '#121824',
+                        subtle: '#1e2736',
+                        gold: '#eab308',
+                        'gold-hover': '#dca506',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
             }
-            .hero-actions .btn { width: 100%; } /* Makes buttons full width safely */
-
-            /* Collapse all grids to 1 column safely */
-            .grid-3, .grid-2, .form-grid, .footer-grid { 
-                grid-template-columns: 1fr; 
-                gap: 20px; 
-            }
-            .span-2, .col-span-2 { grid-column: span 1; }
-            
-            /* Responsive adjustments for cards */
-            .card { padding: 24px; }
-            .card h3 { font-size: 20px; }
-            
-            .calc-box { padding: 24px; }
-            .vs-item { flex-direction: column; align-items: flex-start; gap: 8px; }
-            
-            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-            .btn-header { width: auto; padding: 10px 20px; font-size: 14px; }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .range-slider { @apply w-full h-2 bg-deep border border-subtle rounded-lg appearance-none cursor-pointer; }
+            .range-slider::-webkit-slider-thumb { @apply appearance-none w-5 h-5 bg-gold rounded-full shadow-[0_0_10px_rgba(234,179,8,0.5)]; }
         }
     </style>
 </head>
-<body>
+<body class="bg-deep text-white font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-black">
 
-    <header class="site-header">
-        <div class="container nav-wrapper">
-            <a href="/" class="logo">Homnivas<span>.</span></a>
-            <nav class="nav-links">
-                <a href="#problem">The Problem</a>
-                <a href="#calculator">Impact</a>
-                <a href="#process">How It Works</a>
+    <header class="fixed top-0 w-full z-50 bg-deep/90 backdrop-blur-md border-b border-subtle">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="/" class="font-display font-extrabold text-2xl tracking-tight">
+                Homnivas<span class="text-gold">.</span>
+            </a>
+            <nav class="hidden md:flex gap-8">
+                <a href="#problem" class="text-sm font-medium text-slate-400 hover:text-gold transition">The Problem</a>
+                <a href="#calculator" class="text-sm font-medium text-slate-400 hover:text-gold transition">Impact</a>
+                <a href="#process" class="text-sm font-medium text-slate-400 hover:text-gold transition">How It Works</a>
             </nav>
-            <a href="#apply" class="btn btn-gold btn-header">Apply Now</a>
+            <a href="#apply" class="bg-gold hover:bg-gold-hover text-black px-5 py-2.5 rounded-lg font-semibold text-sm transition">Apply Now</a>
         </div>
     </header>
 
-    <main>
-        <section class="hero container">
-            <div class="tag">Partner Program</div>
-            <h1>Salary gone by<br>the <span class="gold-text">5th of the month?</span></h1>
-            <p>Multiple high-interest EMIs are eating your income alive. Homnivas steps in, pays them off, and gives you back control with just 1 simple EMI.</p>
+    <main class="max-w-7xl mx-auto px-6 pb-24">
+        
+        <section class="pt-40 pb-20 text-center max-w-3xl mx-auto">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-subtle bg-black/20 text-slate-400 text-xs font-semibold uppercase tracking-wider mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_#eab308]"></span>
+                Partner Program
+            </span>
+            <h1 class="font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight mb-6">
+                Salary gone by <br class="hidden md:block">the <span class="text-gold">5th of the month?</span>
+            </h1>
+            <p class="text-lg text-slate-400 mb-10 leading-relaxed">
+                Multiple high-interest EMIs are eating your income alive. Homnivas steps in, pays them off, and gives you back control with just 1 simple EMI.
+            </p>
             
-            <div class="hero-actions">
-                <a href="#apply" class="btn btn-gold">Start Your Rescue</a>
-                <a href="#calculator" class="btn btn-outline">See The Math</a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#apply" class="bg-gold hover:bg-gold-hover text-black px-8 py-4 rounded-xl font-semibold transition flex justify-center items-center">
+                    Start Your Rescue
+                </a>
+                <a href="#calculator" class="bg-transparent border border-subtle hover:border-gold text-white hover:text-gold px-8 py-4 rounded-xl font-semibold transition flex justify-center items-center">
+                    See The Math
+                </a>
             </div>
         </section>
 
-        <section id="problem" class="section container">
-            <h2>The Debt Trap Architecture</h2>
-            <div class="grid-3">
-                <div class="card span-2">
-                    <span class="icon">📈</span>
-                    <h3>The Good CIBIL Curse</h3>
-                    <p>Because your CIBIL was excellent, banks threw money at you. What started as an emergency loan multiplied. Now, 5 different apps auto-debit your account, creating absolute chaos.</p>
+        <section id="problem" class="py-16 md:py-24">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-10 text-center md:text-left">The Debt Trap Architecture</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="md:col-span-2 bg-card border border-subtle rounded-2xl p-8 hover:border-gold/50 transition duration-300">
+                    <span class="text-4xl mb-6 block">📈</span>
+                    <h3 class="font-display text-2xl font-bold mb-3">The Good CIBIL Curse</h3>
+                    <p class="text-slate-400 leading-relaxed">Because your CIBIL was excellent, banks threw money at you. What started as an emergency loan multiplied. Now, 5 different apps auto-debit your account, creating absolute chaos.</p>
                 </div>
-                <div class="card" style="background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.2);">
-                    <span class="icon">🚫</span>
-                    <h3 style="color: var(--red);">The Dead End</h3>
-                    <p>Friends and family can't lend the lump sum needed. You are trapped.</p>
+                
+                <div class="bg-red-500/5 border border-red-500/20 rounded-2xl p-8">
+                    <span class="text-4xl mb-6 block">🚫</span>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-red-500">The Dead End</h3>
+                    <p class="text-slate-400 leading-relaxed">Friends and family can't lend the lump sum needed. You are trapped.</p>
                 </div>
-                <div class="card">
-                    <h3 style="color: var(--red); font-size: 32px;">36%+</h3>
-                    <p style="margin-top: 8px;">App loans charge predatory rates. You only pay interest, never principal.</p>
+                
+                <div class="bg-card border border-subtle rounded-2xl p-8 hover:border-gold/50 transition duration-300">
+                    <h3 class="font-display text-4xl font-bold text-red-500 mb-2">36%+</h3>
+                    <p class="text-slate-400 leading-relaxed">App loans charge predatory rates. You only pay interest, never principal.</p>
                 </div>
-                <div class="card span-2">
-                    <span class="icon">🏦</span>
-                    <h3>0 Bank Balance</h3>
-                    <p>The joy of payday lasts exactly 24 hours before the EMIs trigger. Your hard-earned salary belongs to the bank, not you.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="calculator" class="section container">
-            <div class="card calc-box grid-2">
-                <div>
-                    <h2>See the Impact.</h2>
-                    <p style="color: var(--text-muted); font-size: 16px;">Stop paying 5 lenders at 30%+ interest. Drag the slider to see how we cut your monthly burden.</p>
-                    
-                    <div class="slider-wrap">
-                        <div class="slider-labels">
-                            <span style="color: var(--text-muted);">Total Debt</span>
-                            <span class="gold-text" id="loanText" style="font-family: 'Outfit'; font-size: 20px;">₹5,00,000</span>
-                        </div>
-                        <input type="range" id="loanSlider" min="100000" max="1500000" step="50000" value="500000">
-                    </div>
-                </div>
-
-                <div class="vs-stack">
-                    <div class="vs-item vs-red">
-                        <div>
-                            <div class="vs-title">Chaotic App Loans</div>
-                            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Multiple dates, high stress</div>
-                        </div>
-                        <div class="vs-val" style="color: var(--red);" id="oldEmi">₹28,500<span style="font-size: 14px; font-weight: 500; color: var(--text-muted);">/mo</span></div>
-                    </div>
-                    <div class="vs-item vs-green">
-                        <div>
-                            <div class="vs-title" style="color: var(--green);">Homnivas 1-EMI</div>
-                            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Normal interest, one date</div>
-                        </div>
-                        <div class="vs-val" style="color: var(--green);" id="newEmi">₹14,200<span style="font-size: 14px; font-weight: 500; color: var(--green);">/mo</span></div>
-                    </div>
+                
+                <div class="md:col-span-2 bg-card border border-subtle rounded-2xl p-8 hover:border-gold/50 transition duration-300">
+                    <span class="text-4xl mb-6 block">🏦</span>
+                    <h3 class="font-display text-2xl font-bold mb-3">0 Bank Balance</h3>
+                    <p class="text-slate-400 leading-relaxed">The joy of payday lasts exactly 24 hours before the EMIs trigger. Your hard-earned salary belongs to the bank, not you.</p>
                 </div>
             </div>
         </section>
 
-        <section id="process" class="section container">
-            <div class="grid-2">
+        <section id="calculator" class="py-16 md:py-24">
+            <div class="bg-card border border-subtle rounded-3xl p-8 md:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
                 
                 <div>
-                    <h2>How We Free You</h2>
-                    <div class="timeline">
-                        <div class="step">
-                            <h3>1. Transparent Evaluation</h3>
-                            <p>We analyze your math, not your mistakes. We calculate exactly what you owe across all platforms.</p>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-4">See the Impact.</h2>
+                    <p class="text-slate-400 text-lg mb-10">Stop paying 5 lenders at 30%+ interest. Drag the slider to see how we cut your monthly burden.</p>
+                    
+                    <div class="mb-6 flex justify-between items-end">
+                        <span class="text-slate-400 font-medium">Total Debt</span>
+                        <span id="loanText" class="font-display text-2xl font-bold text-gold">₹5,00,000</span>
+                    </div>
+                    <input type="range" id="loanSlider" min="100000" max="1500000" step="50000" value="500000" class="range-slider">
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <div class="bg-black/20 border border-subtle rounded-xl p-6 flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-l-4 border-l-red-500">
+                        <div>
+                            <div class="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">Chaotic App Loans</div>
+                            <div class="text-sm text-slate-500">Multiple dates, high stress</div>
                         </div>
-                        <div class="step">
-                            <h3>2. The Takeover</h3>
-                            <p>Homnivas steps in and directly clears your high-interest debts with the banks and loan apps.</p>
+                        <div id="oldEmi" class="font-display text-3xl font-bold text-red-500">
+                            ₹28,500<span class="text-base text-slate-500 font-medium">/mo</span>
                         </div>
-                        <div class="step">
-                            <h3>3. You Keep Your Salary</h3>
-                            <p>Your messy web is destroyed. You pay ONE simple EMI directly to us at a fair, standard rate.</p>
+                    </div>
+                    
+                    <div class="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-6 flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-l-4 border-l-emerald-500">
+                        <div>
+                            <div class="text-xs font-bold text-emerald-500 uppercase tracking-wide mb-1">Homnivas 1-EMI</div>
+                            <div class="text-sm text-slate-500">Normal interest, one date</div>
+                        </div>
+                        <div id="newEmi" class="font-display text-3xl font-bold text-emerald-500">
+                            ₹14,200<span class="text-base text-emerald-600 font-medium">/mo</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="card" id="apply">
-                    <h2 style="margin-bottom: 8px;">Break the Trap</h2>
-                    <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 24px;">100% Secure & Confidential application.</p>
-                    
-                    <form class="form-grid" onsubmit="event.preventDefault();">
-                        <input type="text" class="input-field col-span-2" placeholder="Full Name" required>
-                        <input type="tel" class="input-field col-span-2" placeholder="Phone Number" required>
+            </div>
+        </section>
+
+        <section id="process" class="py-16 md:py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+                
+                <div>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold mb-12">How We Free You</h2>
+                    <div class="relative border-l-2 border-subtle ml-4 pl-8 space-y-12">
                         
-                        <select class="input-field col-span-2" required style="appearance: none;">
-                            <option value="" disabled selected>Select Total Debt Amount</option>
-                            <option value="low" style="background: #121824;">Under ₹1 Lakh</option>
-                            <option value="mid" style="background: #121824;">₹1 Lakh - ₹5 Lakhs</option>
-                            <option value="high" style="background: #121824;">Above ₹5 Lakhs</option>
+                        <div class="relative">
+                            <div class="absolute -left-[39px] top-1.5 w-3 h-3 bg-gold rounded-full border-2 border-deep ring-2 ring-gold/20"></div>
+                            <h3 class="font-display text-xl font-bold mb-2">1. Transparent Evaluation</h3>
+                            <p class="text-slate-400">We analyze your math, not your mistakes. We calculate exactly what you owe across all platforms.</p>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="absolute -left-[39px] top-1.5 w-3 h-3 bg-gold rounded-full border-2 border-deep ring-2 ring-gold/20"></div>
+                            <h3 class="font-display text-xl font-bold mb-2">2. The Takeover</h3>
+                            <p class="text-slate-400">Homnivas steps in and directly clears your high-interest debts with the banks and loan apps.</p>
+                        </div>
+                        
+                        <div class="relative">
+                            <div class="absolute -left-[39px] top-1.5 w-3 h-3 bg-gold rounded-full border-2 border-deep ring-2 ring-gold/20"></div>
+                            <h3 class="font-display text-xl font-bold mb-2">3. You Keep Your Salary</h3>
+                            <p class="text-slate-400">Your messy web is destroyed. You pay ONE simple EMI directly to us at a fair, standard rate.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="apply" class="bg-card border border-subtle rounded-2xl p-8 md:p-10">
+                    <h2 class="font-display text-2xl font-bold mb-2">Break the Trap</h2>
+                    <p class="text-slate-400 text-sm mb-8">100% Secure & Confidential application.</p>
+                    
+                    <form class="grid grid-cols-1 sm:grid-cols-2 gap-4" onsubmit="event.preventDefault();">
+                        <input type="text" placeholder="Full Name" required class="col-span-1 sm:col-span-2 w-full bg-black/20 border border-subtle rounded-lg px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold transition">
+                        
+                        <input type="tel" placeholder="Phone Number" required class="col-span-1 sm:col-span-2 w-full bg-black/20 border border-subtle rounded-lg px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-gold transition">
+                        
+                        <select required class="col-span-1 sm:col-span-2 w-full bg-black/20 border border-subtle rounded-lg px-4 py-3.5 text-white focus:outline-none focus:border-gold transition appearance-none">
+                            <option value="" disabled selected class="text-slate-500">Select Total Debt Amount</option>
+                            <option value="low" class="bg-card text-white">Under ₹1 Lakh</option>
+                            <option value="mid" class="bg-card text-white">₹1 Lakh - ₹5 Lakhs</option>
+                            <option value="high" class="bg-card text-white">Above ₹5 Lakhs</option>
                         </select>
                         
-                        <button type="submit" class="btn btn-gold col-span-2" style="margin-top: 8px; width: 100%;">Apply for Rescue</button>
+                        <button type="submit" class="col-span-1 sm:col-span-2 w-full bg-gold hover:bg-gold-hover text-black font-semibold rounded-lg px-4 py-4 mt-2 transition">
+                            Apply for Rescue
+                        </button>
                     </form>
                 </div>
                 
@@ -380,35 +200,40 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="/" class="logo" style="margin-bottom: 16px; display: block;">Homnivas<span>.</span></a>
-                    <p>We believe good people deserve a second chance at financial freedom. We partner with you to destroy predatory debt.</p>
+    <footer class="bg-[#070b12] border-t border-subtle pt-16 pb-8 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <a href="/" class="font-display font-extrabold text-2xl tracking-tight block mb-4">
+                        Homnivas<span class="text-gold">.</span>
+                    </a>
+                    <p class="text-slate-400 max-w-sm">We believe good people deserve a second chance at financial freedom. We partner with you to destroy predatory debt.</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Program</h4>
-                    <ul class="footer-links">
-                        <li><a href="#problem">The Problem</a></li>
-                        <li><a href="#process">How It Works</a></li>
-                        <li><a href="#calculator">EMI Calculator</a></li>
+                
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-6">Program</h4>
+                    <ul class="space-y-3 text-slate-400">
+                        <li><a href="#problem" class="hover:text-gold transition">The Problem</a></li>
+                        <li><a href="#process" class="hover:text-gold transition">How It Works</a></li>
+                        <li><a href="#calculator" class="hover:text-gold transition">EMI Calculator</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-6">Legal</h4>
+                    <ul class="space-y-3 text-slate-400">
+                        <li><a href="#" class="hover:text-gold transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-gold transition">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            
+            <div class="border-t border-subtle pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
                 <p>&copy; 2026 Homnivas Finance Networks. All Rights Reserved.</p>
-                <div style="display: flex; gap: 16px;">
-                    <a href="#" style="color: var(--text-muted);">LinkedIn</a>
-                    <a href="#" style="color: var(--text-muted);">Twitter</a>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">LinkedIn</a>
+                    <a href="#" class="hover:text-white transition">Twitter</a>
                 </div>
             </div>
         </div>
@@ -424,8 +249,8 @@
         slider.oninput = function() {
             const val = parseInt(this.value);
             loanText.innerHTML = fmt.format(val);
-            oldEmi.innerHTML = fmt.format(val * 0.057) + '<span style="font-size: 14px; font-weight: 500; color: #94a3b8;">/mo</span>';
-            newEmi.innerHTML = fmt.format(val * 0.0284) + '<span style="font-size: 14px; font-weight: 500; color: #10b981;">/mo</span>';
+            oldEmi.innerHTML = fmt.format(val * 0.057) + '<span class="text-base text-slate-500 font-medium">/mo</span>';
+            newEmi.innerHTML = fmt.format(val * 0.0284) + '<span class="text-base text-emerald-600 font-medium">/mo</span>';
         }
     </script>
 </body>
