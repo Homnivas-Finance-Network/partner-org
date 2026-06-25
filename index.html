@@ -2,303 +2,385 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homnivas Partner | Financial Rescue</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Homnivas Partner Program | Escape the EMI Trap</title>
+    <meta name="description" content="The Homnivas Partner Program merges your high-interest emergency loans and credit card bills into one simple, manageable EMI. Take control of your salary today.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
     <style>
-        /* --- BRAND ALIGNED COLOR SYSTEM (DEEP NAVY & GOLD) --- */
+        /* --- GLOBAL RESET & BRAND COLORS --- */
         :root {
-            --bg-deep: #0a0f18;        /* Homnivas Deep Midnight Navy */
-            --bg-card: #121824;        /* Slightly lighter Navy for cards */
-            --border-subtle: #1e2736;  /* Soft navy border */
-            --border-hover: #eab308;   /* Gold hover state */
-            --gold: #eab308;           /* Homnivas Gold */
+            --bg-deep: #0a0f18;        
+            --bg-card: #121824;        
+            --border-subtle: #1e2736;  
+            --gold: #eab308;           
             --text-main: #ffffff;      
-            --text-muted: #94a3b8;     /* Soft blue-gray for paragraphs */
+            --text-muted: #94a3b8;     
             --red: #ef4444;
             --green: #10b981;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Strict Box Sizing to kill horizontal scroll bugs */
+        *, *::before, *::after { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
         
-        body {
+        html, body {
             background-color: var(--bg-deep); 
             color: var(--text-main);
             font-family: 'Inter', sans-serif; 
             font-size: 16px; 
             line-height: 1.6;
             -webkit-font-smoothing: antialiased; 
-            overflow-x: hidden;
+            overflow-x: hidden; /* Hard lock to prevent horizontal blank space */
+            width: 100%;
         }
 
-        h1, h2, h3 { 
+        h1, h2, h3, h4 { 
             font-family: 'Outfit', sans-serif; 
             font-weight: 700; 
             line-height: 1.2; 
             letter-spacing: -0.02em; 
             color: var(--text-main); 
         }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
         
-        /* --- GUARANTEED SIDE MARGINS --- */
+        /* --- LAYOUT CONTAINERS --- */
         .container { 
             width: 100%; 
             max-width: 1200px; 
             margin: 0 auto; 
-            padding: 0 5%; /* Percentage ensures it never touches the screen edge */
+            padding: 0 24px; /* Fixed, safe padding for all devices */
         }
         
-        .section { padding: 120px 0; }
+        .section { padding: 100px 0; }
         
-        /* --- TYPOGRAPHY & TAGS --- */
-        .gold-text { color: var(--gold); }
-        .tag { 
-            display: inline-flex; 
-            align-items: center; 
-            padding: 6px 16px; 
-            border: 1px solid var(--border-subtle); 
-            border-radius: 100px; 
-            color: var(--text-muted); 
-            font-size: 13px; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            margin-bottom: 32px; 
-            background: rgba(0,0,0,0.2); 
+        /* --- HEADER & NAVIGATION --- */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 15, 24, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+            padding: 16px 0;
         }
-        .tag::before { 
-            content: ''; 
-            width: 8px; 
-            height: 8px; 
-            background: var(--gold); 
-            border-radius: 50%; 
-            margin-right: 12px; 
-            box-shadow: 0 0 10px var(--gold); 
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .logo span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--gold); }
 
         /* --- BUTTONS --- */
         .btn {
-            display: inline-flex; 
-            justify-content: center; 
-            align-items: center;
-            padding: 16px 32px; 
-            border-radius: 12px; 
-            font-family: 'Inter', sans-serif; 
-            font-weight: 600; 
-            font-size: 16px; 
-            text-decoration: none; 
-            transition: all 0.2s ease; 
-            cursor: pointer; 
-            border: 1px solid transparent; 
-            width: max-content;
+            display: inline-flex; justify-content: center; align-items: center;
+            padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; 
+            transition: all 0.2s ease; cursor: pointer; border: none;
         }
-        .btn-primary { background: var(--gold); color: #000; }
-        .btn-primary:hover { background: #dca506; transform: translateY(-2px); }
-        .btn-gold { background: rgba(234, 179, 8, 0.1); color: var(--gold); border-color: rgba(234, 179, 8, 0.3); }
-        .btn-gold:hover { background: rgba(234, 179, 8, 0.2); border-color: var(--gold); }
+        .btn-gold { background: var(--gold); color: #000; }
+        .btn-gold:hover { background: #dca506; transform: translateY(-2px); }
+        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border-subtle); }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-        /* --- CARDS --- */
+        .tag { 
+            display: inline-flex; align-items: center; padding: 6px 16px; 
+            border: 1px solid var(--border-subtle); border-radius: 100px; 
+            color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; 
+            letter-spacing: 1px; margin-bottom: 24px; background: rgba(0,0,0,0.3); 
+        }
+        .tag::before { 
+            content: ''; width: 6px; height: 6px; background: var(--gold); 
+            border-radius: 50%; margin-right: 10px; box-shadow: 0 0 8px var(--gold); 
+        }
+
+        /* --- HERO --- */
+        .hero { padding: 160px 0 80px; text-align: center; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; }
+        .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; font-size: 18px; }
+
+        /* --- GRIDS & CARDS --- */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+        .span-2 { grid-column: span 2; }
+
         .card {
             background: var(--bg-card); 
             border: 1px solid var(--border-subtle); 
             border-radius: 16px; 
-            padding: 40px; 
-            transition: border-color 0.3s ease, transform 0.3s ease;
+            padding: 32px; 
         }
-        .card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
 
-        /* --- HERO --- */
-        .hero { padding: 140px 0 80px; text-align: center; }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: 24px; }
-        .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 48px; font-size: 18px; line-height: 1.7; }
+        .card h3 { font-size: 22px; margin-bottom: 12px; }
+        .card p { color: var(--text-muted); font-size: 15px; }
+        .icon { font-size: 28px; margin-bottom: 16px; display: block; }
 
-        /* --- GRIDS --- */
-        .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .bento-large { grid-column: span 2; }
-        
-        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-        
-        .bento h3 { font-size: 24px; margin-bottom: 12px; color: var(--text-main); }
-        .bento p { color: var(--text-muted); font-size: 16px; }
-        .icon { font-size: 32px; margin-bottom: 24px; display: block; }
-
-        /* --- CALCULATOR --- */
-        .slider-wrap { margin: 48px 0; }
-        .slider-labels { display: flex; justify-content: space-between; margin-bottom: 16px; font-weight: 500; font-size: 16px; }
-        
+        /* --- CALCULATOR UI --- */
+        .calc-box { padding: 48px; }
+        .slider-wrap { margin: 40px 0; }
+        .slider-labels { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 500; }
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; background: #0a0f18; border-radius: 3px; border: 1px solid var(--border-subtle); }
-        input[type=range]::-webkit-slider-thumb { height: 20px; width: 20px; border-radius: 50%; background: var(--gold); cursor: pointer; -webkit-appearance: none; margin-top: -8px; box-shadow: 0 0 10px rgba(234, 179, 8, 0.5); }
+        input[type=range]::-webkit-slider-thumb { height: 20px; width: 20px; border-radius: 50%; background: var(--gold); cursor: pointer; -webkit-appearance: none; margin-top: -8px; }
 
         .vs-stack { display: flex; flex-direction: column; gap: 16px; }
-        .vs-item { padding: 24px; border-radius: 12px; border: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2); }
+        .vs-item { padding: 20px; border-radius: 12px; border: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2); }
         .vs-red { border-left: 4px solid var(--red); }
         .vs-green { border-left: 4px solid var(--green); background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2); }
-        .vs-title { font-size: 14px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
-        .vs-val { font-family: 'Outfit'; font-size: 28px; font-weight: 700; color: #fff; }
+        .vs-title { font-size: 12px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
+        .vs-val { font-family: 'Outfit'; font-size: 24px; font-weight: 700; color: #fff; }
 
         /* --- TIMELINE --- */
-        .timeline { margin-top: 48px; border-left: 2px solid var(--border-subtle); padding-left: 32px; display: flex; flex-direction: column; gap: 48px; }
+        .timeline { margin-top: 40px; border-left: 2px solid var(--border-subtle); padding-left: 32px; display: flex; flex-direction: column; gap: 40px; }
         .step { position: relative; }
-        .step::before { content: ''; position: absolute; left: -40px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 3px solid var(--bg-deep); }
-        .step h3 { font-size: 20px; margin-bottom: 8px; color: var(--text-main); }
-        .step p { font-size: 16px; color: var(--text-muted); }
+        .step::before { content: ''; position: absolute; left: -40px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 3px solid var(--bg-deep); }
+        .step h3 { font-size: 20px; margin-bottom: 6px; }
 
         /* --- FORM --- */
-        .spacious-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
-        .input-base { 
-            padding: 16px 20px; 
-            border-radius: 12px; 
-            background: rgba(0,0,0,0.2); 
-            border: 1px solid var(--border-subtle); 
-            color: #ffffff; 
-            font-family: 'Inter'; 
-            font-size: 16px; 
-            width: 100%; 
-            outline: none; 
-            transition: border 0.2s; 
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+        .input-field { 
+            padding: 14px 16px; border-radius: 8px; background: rgba(0,0,0,0.2); 
+            border: 1px solid var(--border-subtle); color: #fff; font-family: 'Inter'; 
+            font-size: 15px; width: 100%; outline: none; 
         }
-        .input-base::placeholder { color: #64748b; }
-        .input-base:focus { border-color: var(--gold); }
-        .full-width { grid-column: span 2; }
+        .input-field:focus { border-color: var(--gold); }
+        .col-span-2 { grid-column: span 2; }
 
-        /* --- PROPER MOBILE OPTIMIZATION --- */
+        /* --- FOOTER --- */
+        .site-footer {
+            border-top: 1px solid var(--border-subtle);
+            background: #070b12;
+            padding: 60px 0 40px;
+            margin-top: 60px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-col h4 { font-size: 18px; margin-bottom: 20px; }
+        .footer-col p { color: var(--text-muted); font-size: 14px; max-width: 300px; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-muted); font-size: 14px; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-bottom {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* --- STRICT MOBILE OPTIMIZATION --- */
         @media (max-width: 900px) {
+            .nav-links { display: none; } /* Hide links on mobile for simplicity, keep CTA */
+            
             .section { padding: 80px 0; }
-            .hero { padding: 80px 0 40px; }
+            .hero { padding: 120px 0 40px; }
             
-            /* Collapse all grids safely */
-            .bento, .grid-2-col { grid-template-columns: 1fr; gap: 24px; }
-            .bento-large { grid-column: span 1; }
+            /* Force grids to single column, ensure no overflow */
+            .grid-3, .grid-2, .form-grid, .footer-grid { 
+                grid-template-columns: 1fr; 
+                gap: 24px; 
+            }
+            .span-2, .col-span-2 { grid-column: span 1; }
             
-            /* Maintain Card padding but ensure it fits */
-            .card { padding: 32px 24px; }
+            .calc-box { padding: 32px 24px; }
+            .vs-item { flex-direction: column; align-items: flex-start; gap: 8px; }
             
-            /* Fix Calculator stack for narrow screens */
-            .vs-item { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; }
-            
-            /* Fix Form layout */
-            .spacious-form { grid-template-columns: 1fr; gap: 16px; }
-            .full-width { grid-column: span 1; }
-            .btn { width: 100%; justify-content: center; }
-            
-            /* Fix Timeline spacing */
-            .timeline { padding-left: 24px; gap: 40px; margin-top: 32px; }
+            .timeline { padding-left: 24px; }
             .step::before { left: -32px; }
+            
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            .btn { width: 100%; }
+            .btn-header { width: auto; padding: 10px 20px; font-size: 14px; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero container">
-        <div class="tag">Partner Program</div>
-        <h1>Salary gone by<br>the <span class="gold-text">5th of the month?</span></h1>
-        <p>Multiple high-interest EMIs are eating your income alive. Homnivas steps in, pays them off, and gives you back control with just 1 simple EMI.</p>
-        <a href="#apply" class="btn btn-primary">Start Your Rescue</a>
-    </section>
-
-    <section class="section container">
-        <h2 style="font-size: 32px; margin-bottom: 40px;">The Debt Trap Architecture</h2>
-        <div class="bento">
-            <div class="card bento-large">
-                <span class="icon">📈</span>
-                <h3>The Good CIBIL Curse</h3>
-                <p>Because your CIBIL was excellent, banks threw money at you. What started as an emergency loan multiplied. Now, 5 different apps auto-debit your account, creating absolute chaos.</p>
-            </div>
-            <div class="card" style="background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.2);">
-                <span class="icon">🚫</span>
-                <h3 style="color: var(--red);">The Dead End</h3>
-                <p>Friends and family can't lend the lump sum needed. You are trapped.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--red); font-size: 36px;">36%+</h3>
-                <p style="margin-top: 8px;">App loans charge predatory rates. You only pay interest, never principal.</p>
-            </div>
-            <div class="card bento-large">
-                <span class="icon">🏦</span>
-                <h3>0 Bank Balance</h3>
-                <p>The joy of payday lasts exactly 24 hours before the EMIs trigger. Your hard-earned salary belongs to the bank, not you.</p>
-            </div>
+    <header class="site-header">
+        <div class="container nav-wrapper">
+            <a href="/" class="logo">Homnivas<span>.</span></a>
+            <nav class="nav-links">
+                <a href="#problem">The Problem</a>
+                <a href="#calculator">Impact</a>
+                <a href="#process">How It Works</a>
+            </nav>
+            <a href="#apply" class="btn btn-gold btn-header">Apply Now</a>
         </div>
-    </section>
+    </header>
 
-    <section class="section container">
-        <div class="card grid-2-col">
-            <div>
-                <h2 style="font-size: 36px; margin-bottom: 16px;">See the Impact.</h2>
-                <p style="color: var(--text-muted); font-size: 18px;">Stop paying 5 lenders at 30%+ interest. Drag the slider to see how we cut your monthly burden.</p>
-                
-                <div class="slider-wrap">
-                    <div class="slider-labels">
-                        <span style="color: var(--text-muted);">Total Debt</span>
-                        <span class="gold-text" id="loanText" style="font-family: 'Outfit'; font-size: 20px;">₹5,00,000</span>
-                    </div>
-                    <input type="range" id="loanSlider" min="100000" max="1500000" step="50000" value="500000">
+    <main>
+        <section class="hero container">
+            <div class="tag">Partner Program</div>
+            <h1>Salary gone by<br>the <span class="gold-text">5th of the month?</span></h1>
+            <p>Multiple high-interest EMIs are eating your income alive. Homnivas steps in, pays them off, and gives you back control with just 1 simple EMI.</p>
+            <a href="#apply" class="btn btn-gold" style="margin-right: 12px;">Start Your Rescue</a>
+            <a href="#calculator" class="btn btn-outline">See The Math</a>
+        </section>
+
+        <section id="problem" class="section container">
+            <h2 style="font-size: 32px; margin-bottom: 32px;">The Debt Trap Architecture</h2>
+            <div class="grid-3">
+                <div class="card span-2">
+                    <span class="icon">📈</span>
+                    <h3>The Good CIBIL Curse</h3>
+                    <p>Because your CIBIL was excellent, banks threw money at you. What started as an emergency loan multiplied. Now, 5 different apps auto-debit your account, creating absolute chaos.</p>
+                </div>
+                <div class="card" style="background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.2);">
+                    <span class="icon">🚫</span>
+                    <h3 style="color: var(--red);">The Dead End</h3>
+                    <p>Friends and family can't lend the lump sum needed. You are trapped.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: var(--red); font-size: 32px;">36%+</h3>
+                    <p style="margin-top: 8px;">App loans charge predatory rates. You only pay interest, never principal.</p>
+                </div>
+                <div class="card span-2">
+                    <span class="icon">🏦</span>
+                    <h3>0 Bank Balance</h3>
+                    <p>The joy of payday lasts exactly 24 hours before the EMIs trigger. Your hard-earned salary belongs to the bank, not you.</p>
                 </div>
             </div>
+        </section>
 
-            <div class="vs-stack">
-                <div class="vs-item vs-red">
-                    <div>
-                        <div class="vs-title">Chaotic App Loans</div>
-                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Multiple dates, high stress</div>
-                    </div>
-                    <div class="vs-val" style="color: var(--red);" id="oldEmi">₹28,500<span style="font-size: 16px; font-weight: 500; color: var(--text-muted);">/mo</span></div>
-                </div>
-                <div class="vs-item vs-green">
-                    <div>
-                        <div class="vs-title" style="color: var(--green);">Homnivas 1-EMI</div>
-                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Normal interest, one date</div>
-                    </div>
-                    <div class="vs-val" style="color: var(--green);" id="newEmi">₹14,200<span style="font-size: 16px; font-weight: 500; color: var(--green);">/mo</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section container" id="apply">
-        <div class="grid-2-col">
-            
-            <div>
-                <h2 style="font-size: 36px;">How We Free You</h2>
-                <div class="timeline">
-                    <div class="step">
-                        <h3>1. Transparent Evaluation</h3>
-                        <p>We analyze your math, not your mistakes. We calculate exactly what you owe.</p>
-                    </div>
-                    <div class="step">
-                        <h3>2. The Takeover</h3>
-                        <p>Homnivas steps in and directly clears your high-interest debts with the banks.</p>
-                    </div>
-                    <div class="step">
-                        <h3>3. You Keep Your Salary</h3>
-                        <p>Your messy web is destroyed. You pay ONE simple EMI to us at a fair rate.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2 style="font-size: 28px; margin-bottom: 12px;">Break the Trap</h2>
-                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px;">100% Secure & Confidential.</p>
-                
-                <form class="spacious-form" onsubmit="event.preventDefault();">
-                    <input type="text" class="input-base full-width" placeholder="Full Name" required>
-                    <input type="tel" class="input-base full-width" placeholder="Phone Number" required>
+        <section id="calculator" class="section container">
+            <div class="card calc-box grid-2">
+                <div>
+                    <h2 style="font-size: 32px; margin-bottom: 16px;">See the Impact.</h2>
+                    <p style="color: var(--text-muted); font-size: 16px;">Stop paying 5 lenders at 30%+ interest. Drag the slider to see how we cut your monthly burden.</p>
                     
-                    <select class="input-base full-width" required style="appearance: none; background-color: rgba(0,0,0,0.2); color: white;">
-                        <option value="" disabled selected>Debt Amount</option>
-                        <option value="low" style="background: #121824;">Under ₹1 Lakh</option>
-                        <option value="mid" style="background: #121824;">₹1L - ₹5L</option>
-                        <option value="high" style="background: #121824;">Above ₹5 Lakhs</option>
-                    </select>
-                    
-                    <button type="submit" class="btn btn-gold full-width" style="margin-top: 16px;">Apply for Rescue</button>
-                </form>
+                    <div class="slider-wrap">
+                        <div class="slider-labels">
+                            <span style="color: var(--text-muted);">Total Debt</span>
+                            <span class="gold-text" id="loanText" style="font-family: 'Outfit'; font-size: 20px;">₹5,00,000</span>
+                        </div>
+                        <input type="range" id="loanSlider" min="100000" max="1500000" step="50000" value="500000">
+                    </div>
+                </div>
+
+                <div class="vs-stack">
+                    <div class="vs-item vs-red">
+                        <div>
+                            <div class="vs-title">Chaotic App Loans</div>
+                            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Multiple dates, high stress</div>
+                        </div>
+                        <div class="vs-val" style="color: var(--red);" id="oldEmi">₹28,500<span style="font-size: 14px; font-weight: 500; color: var(--text-muted);">/mo</span></div>
+                    </div>
+                    <div class="vs-item vs-green">
+                        <div>
+                            <div class="vs-title" style="color: var(--green);">Homnivas 1-EMI</div>
+                            <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Normal interest, one date</div>
+                        </div>
+                        <div class="vs-val" style="color: var(--green);" id="newEmi">₹14,200<span style="font-size: 14px; font-weight: 500; color: var(--green);">/mo</span></div>
+                    </div>
+                </div>
             </div>
-            
+        </section>
+
+        <section id="process" class="section container">
+            <div class="grid-2">
+                
+                <div>
+                    <h2 style="font-size: 32px;">How We Free You</h2>
+                    <div class="timeline">
+                        <div class="step">
+                            <h3>1. Transparent Evaluation</h3>
+                            <p>We analyze your math, not your mistakes. We calculate exactly what you owe across all platforms.</p>
+                        </div>
+                        <div class="step">
+                            <h3>2. The Takeover</h3>
+                            <p>Homnivas steps in and directly clears your high-interest debts with the banks and loan apps.</p>
+                        </div>
+                        <div class="step">
+                            <h3>3. You Keep Your Salary</h3>
+                            <p>Your messy web is destroyed. You pay ONE simple EMI directly to us at a fair, standard rate.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" id="apply">
+                    <h2 style="font-size: 28px; margin-bottom: 8px;">Break the Trap</h2>
+                    <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 24px;">100% Secure & Confidential application.</p>
+                    
+                    <form class="form-grid" onsubmit="event.preventDefault();">
+                        <input type="text" class="input-field col-span-2" placeholder="Full Name" required>
+                        <input type="tel" class="input-field col-span-2" placeholder="Phone Number" required>
+                        
+                        <select class="input-field col-span-2" required style="appearance: none;">
+                            <option value="" disabled selected>Select Total Debt Amount</option>
+                            <option value="low" style="background: #121824;">Under ₹1 Lakh</option>
+                            <option value="mid" style="background: #121824;">₹1 Lakh - ₹5 Lakhs</option>
+                            <option value="high" style="background: #121824;">Above ₹5 Lakhs</option>
+                        </select>
+                        
+                        <button type="submit" class="btn btn-gold col-span-2" style="margin-top: 8px;">Apply for Rescue</button>
+                    </form>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="/" class="logo" style="margin-bottom: 16px; display: block;">Homnivas<span>.</span></a>
+                    <p>We believe good people deserve a second chance at financial freedom. We partner with you to destroy predatory debt.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Program</h4>
+                    <ul class="footer-links">
+                        <li><a href="#problem">The Problem</a></li>
+                        <li><a href="#process">How It Works</a></li>
+                        <li><a href="#calculator">EMI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Homnivas Finance Networks. All Rights Reserved.</p>
+                <div style="display: flex; gap: 16px;">
+                    <a href="#" style="color: var(--text-muted);">LinkedIn</a>
+                    <a href="#" style="color: var(--text-muted);">Twitter</a>
+                </div>
+            </div>
         </div>
-    </section>
+    </footer>
 
     <script>
+        // Minimalist Calculator Logic
         const slider = document.getElementById("loanSlider");
         const loanText = document.getElementById("loanText");
         const oldEmi = document.getElementById("oldEmi");
@@ -308,8 +390,8 @@
         slider.oninput = function() {
             const val = parseInt(this.value);
             loanText.innerHTML = fmt.format(val);
-            oldEmi.innerHTML = fmt.format(val * 0.057) + '<span style="font-size: 16px; font-weight: 500; color: #94a3b8;">/mo</span>';
-            newEmi.innerHTML = fmt.format(val * 0.0284) + '<span style="font-size: 16px; font-weight: 500; color: #10b981;">/mo</span>';
+            oldEmi.innerHTML = fmt.format(val * 0.057) + '<span style="font-size: 14px; font-weight: 500; color: #94a3b8;">/mo</span>';
+            newEmi.innerHTML = fmt.format(val * 0.0284) + '<span style="font-size: 14px; font-weight: 500; color: #10b981;">/mo</span>';
         }
     </script>
 </body>
