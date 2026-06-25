@@ -6,14 +6,14 @@
     <title>Homnivas Partner | Financial Rescue</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* --- CORE SYSTEM --- */
+        /* --- CORE SYSTEM & COLORS --- */
         :root {
-            --bg-deep: #050505; /* True minimal black */
-            --bg-card: #0d0d0d;
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(234, 179, 8, 0.4);
+            --bg-deep: #000000;        /* True minimal black */
+            --bg-card: #0a0a0a;        /* Slightly elevated black */
+            --border-subtle: #1f1f1f;
+            --border-hover: #333333;
             --gold: #eab308;
-            --text-main: #f3f4f6;
+            --text-main: #ffffff;      /* Forced pure white for visibility */
             --text-muted: #8b8d91;
             --red: #ef4444;
             --green: #10b981;
@@ -22,97 +22,168 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            background-color: var(--bg-deep); color: var(--text-main);
-            font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.5;
-            -webkit-font-smoothing: antialiased; overflow-x: hidden;
+            background-color: var(--bg-deep); 
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif; 
+            font-size: 16px; 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased; 
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Outfit', sans-serif; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+        h1, h2, h3 { 
+            font-family: 'Outfit', sans-serif; 
+            font-weight: 700; 
+            line-height: 1.2; 
+            letter-spacing: -0.02em; 
+            color: var(--text-main); /* Explicitly set to fix rendering issue */
+        }
         
-        .container { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-        .section { padding: 80px 0; }
+        /* Generous Max-Width for breathing room on sides */
+        .container { 
+            width: 100%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 24px; 
+        }
+        
+        /* Huge section padding for vertical breathing room */
+        .section { padding: 120px 0; }
         
         /* --- TYPOGRAPHY & TAGS --- */
         .gold-text { color: var(--gold); }
-        .tag { display: inline-flex; align-items: center; padding: 4px 12px; border: 1px solid var(--border-subtle); border-radius: 100px; color: var(--text-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; background: rgba(255,255,255,0.02); }
-        .tag::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; margin-right: 8px; box-shadow: 0 0 8px var(--gold); }
+        .tag { 
+            display: inline-flex; 
+            align-items: center; 
+            padding: 6px 16px; 
+            border: 1px solid var(--border-subtle); 
+            border-radius: 100px; 
+            color: var(--text-muted); 
+            font-size: 13px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 32px; 
+            background: #050505; 
+        }
+        .tag::before { 
+            content: ''; 
+            width: 8px; 
+            height: 8px; 
+            background: var(--gold); 
+            border-radius: 50%; 
+            margin-right: 12px; 
+            box-shadow: 0 0 10px var(--gold); 
+        }
 
         /* --- BUTTONS --- */
         .btn {
-            display: inline-flex; justify-content: center; align-items: center;
-            padding: 12px 24px; border-radius: 8px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; text-decoration: none; transition: all 0.2s ease; cursor: pointer; border: 1px solid transparent; width: max-content;
+            display: inline-flex; 
+            justify-content: center; 
+            align-items: center;
+            padding: 16px 32px; 
+            border-radius: 12px; 
+            font-family: 'Inter', sans-serif; 
+            font-weight: 600; 
+            font-size: 16px; 
+            text-decoration: none; 
+            transition: all 0.2s ease; 
+            cursor: pointer; 
+            border: 1px solid transparent; 
+            width: max-content;
         }
-        .btn-primary {
-            background: var(--text-main); color: #000;
-        }
-        .btn-primary:hover { background: #fff; transform: translateY(-1px); }
-        .btn-gold {
-            background: rgba(234, 179, 8, 0.1); color: var(--gold); border-color: rgba(234, 179, 8, 0.2);
-        }
+        .btn-primary { background: var(--text-main); color: #000; }
+        .btn-primary:hover { background: #e5e5e5; transform: translateY(-2px); }
+        .btn-gold { background: rgba(234, 179, 8, 0.1); color: var(--gold); border-color: rgba(234, 179, 8, 0.2); }
         .btn-gold:hover { background: rgba(234, 179, 8, 0.15); border-color: var(--gold); }
 
         /* --- CARDS --- */
         .card {
-            background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 24px; transition: border-color 0.2s;
+            background: var(--bg-card); 
+            border: 1px solid var(--border-subtle); 
+            border-radius: 16px; 
+            padding: 40px; /* Increased padding for inner breathing room */
+            transition: border-color 0.2s;
         }
         .card:hover { border-color: var(--border-hover); }
 
         /* --- HERO --- */
-        .hero { padding: 100px 0 60px; text-align: center; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 16px; }
-        .hero p { color: var(--text-muted); max-width: 500px; margin: 0 auto 32px; font-size: 16px; }
+        .hero { padding: 140px 0 80px; text-align: center; }
+        .hero h1 { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 24px; }
+        .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 48px; font-size: 18px; line-height: 1.7; }
 
-        /* --- TIGHT BENTO GRID --- */
-        .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        /* --- BENTO GRID --- */
+        .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .bento-large { grid-column: span 2; }
-        .bento h3 { font-size: 20px; margin-bottom: 8px; }
-        .bento p { color: var(--text-muted); font-size: 14px; }
-        .icon { font-size: 24px; margin-bottom: 16px; display: block; }
+        .bento h3 { font-size: 24px; margin-bottom: 12px; }
+        .bento p { color: var(--text-muted); font-size: 16px; }
+        .icon { font-size: 32px; margin-bottom: 24px; display: block; }
 
         /* --- CALCULATOR --- */
-        .calc-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .calc-controls { padding-right: 20px; }
-        .slider-wrap { margin: 30px 0; }
-        .slider-labels { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 500; font-size: 14px; }
+        .calc-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 64px; }
+        .slider-wrap { margin: 48px 0; }
+        .slider-labels { display: flex; justify-content: space-between; margin-bottom: 16px; font-weight: 500; font-size: 16px; }
         
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
-        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; background: #222; border-radius: 2px; }
-        input[type=range]::-webkit-slider-thumb { height: 16px; width: 16px; border-radius: 50%; background: var(--gold); cursor: pointer; -webkit-appearance: none; margin-top: -6px; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; background: #222; border-radius: 3px; }
+        input[type=range]::-webkit-slider-thumb { height: 20px; width: 20px; border-radius: 50%; background: var(--gold); cursor: pointer; -webkit-appearance: none; margin-top: -7px; }
 
-        .vs-stack { display: flex; flex-direction: column; gap: 12px; }
-        .vs-item { padding: 16px 20px; border-radius: 8px; border: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); }
-        .vs-red { border-left: 3px solid var(--red); }
-        .vs-green { border-left: 3px solid var(--green); background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2); }
-        .vs-title { font-size: 12px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
-        .vs-val { font-family: 'Outfit'; font-size: 24px; font-weight: 700; }
+        .vs-stack { display: flex; flex-direction: column; gap: 16px; }
+        .vs-item { padding: 24px; border-radius: 12px; border: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; background: #050505; }
+        .vs-red { border-left: 4px solid var(--red); }
+        .vs-green { border-left: 4px solid var(--green); background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2); }
+        .vs-title { font-size: 14px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
+        .vs-val { font-family: 'Outfit'; font-size: 28px; font-weight: 700; color: #fff; }
 
         /* --- TIMELINE --- */
-        .timeline { margin-top: 40px; border-left: 1px solid var(--border-subtle); padding-left: 24px; display: flex; flex-direction: column; gap: 32px; }
+        .timeline { margin-top: 48px; border-left: 2px solid var(--border-subtle); padding-left: 32px; display: flex; flex-direction: column; gap: 48px; }
         .step { position: relative; }
-        .step::before { content: ''; position: absolute; left: -29px; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); border: 2px solid var(--bg-deep); }
-        .step h3 { font-size: 18px; margin-bottom: 4px; }
-        .step p { font-size: 14px; color: var(--text-muted); }
+        .step::before { content: ''; position: absolute; left: -40px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); border: 3px solid var(--bg-deep); }
+        .step h3 { font-size: 20px; margin-bottom: 8px; }
+        .step p { font-size: 16px; color: var(--text-muted); }
 
         /* --- FORM --- */
-        .tight-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
-        .input-base { padding: 12px 16px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: white; font-family: 'Inter'; font-size: 14px; width: 100%; outline: none; transition: border 0.2s; }
+        .spacious-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+        .input-base { 
+            padding: 16px 20px; 
+            border-radius: 12px; 
+            background: #050505; 
+            border: 1px solid var(--border-subtle); 
+            color: #ffffff; /* Explicit text color for inputs */
+            font-family: 'Inter'; 
+            font-size: 16px; 
+            width: 100%; 
+            outline: none; 
+            transition: border 0.2s; 
+        }
+        .input-base::placeholder { color: #555; }
         .input-base:focus { border-color: var(--gold); }
         .full-width { grid-column: span 2; }
 
-        /* --- MOBILE OPTIMIZATION --- */
-        @media (max-width: 768px) {
-            .section { padding: 50px 0; }
-            .hero { padding: 60px 0 40px; }
-            .bento { grid-template-columns: 1fr; gap: 12px; }
+        /* --- MOBILE OPTIMIZATION (THE FIX) --- */
+        @media (max-width: 900px) {
+            .section { padding: 80px 0; }
+            .hero { padding: 100px 0 60px; }
+            
+            /* Collapse Grid with generous gaps */
+            .bento { grid-template-columns: 1fr; gap: 20px; }
             .bento-large { grid-column: span 1; }
             
-            .calc-wrapper { grid-template-columns: 1fr; gap: 32px; }
-            .calc-controls { padding-right: 0; }
-            .vs-item { flex-direction: column; align-items: flex-start; gap: 8px; padding: 16px; }
+            /* Give cards breathing room on mobile */
+            .card { padding: 32px; }
+            .calc-wrapper { grid-template-columns: 1fr; gap: 48px; padding: 32px 24px; }
             
-            .tight-form { grid-template-columns: 1fr; }
+            /* Fix VS Stack alignment for small screens */
+            .vs-item { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; }
+            
+            /* Collapse the Form */
+            .spacious-form { grid-template-columns: 1fr; gap: 16px; }
             .full-width { grid-column: span 1; }
-            .btn { width: 100%; }
+            .btn { width: 100%; justify-content: center; }
+            
+            /* Adjust timeline spacing */
+            .timeline { padding-left: 24px; gap: 40px; }
+            .step::before { left: -32px; }
         }
     </style>
 </head>
@@ -126,7 +197,7 @@
     </section>
 
     <section class="section container">
-        <h2 style="font-size: 24px; margin-bottom: 24px;">The Debt Trap Architecture</h2>
+        <h2 style="font-size: 32px; margin-bottom: 40px;">The Debt Trap Architecture</h2>
         <div class="bento">
             <div class="card bento-large">
                 <span class="icon">📈</span>
@@ -139,8 +210,8 @@
                 <p>Friends and family can't lend the lump sum needed. You are trapped.</p>
             </div>
             <div class="card">
-                <h3 style="color: var(--red); font-size: 28px;">36%+</h3>
-                <p style="margin-top: 4px;">App loans charge predatory rates. You only pay interest, never principal.</p>
+                <h3 style="color: var(--red); font-size: 36px;">36%+</h3>
+                <p style="margin-top: 8px;">App loans charge predatory rates. You only pay interest, never principal.</p>
             </div>
             <div class="card bento-large">
                 <span class="icon">🏦</span>
@@ -152,14 +223,14 @@
 
     <section class="section container">
         <div class="card calc-wrapper">
-            <div class="calc-controls">
-                <h2 style="font-size: 28px; margin-bottom: 12px;">See the Impact.</h2>
-                <p style="color: var(--text-muted); font-size: 14px;">Stop paying 5 lenders at 30%+ interest. Drag the slider to see how we cut your monthly burden.</p>
+            <div>
+                <h2 style="font-size: 36px; margin-bottom: 16px;">See the Impact.</h2>
+                <p style="color: var(--text-muted); font-size: 18px;">Stop paying 5 lenders at 30%+ interest. Drag the slider to see how we cut your monthly burden.</p>
                 
                 <div class="slider-wrap">
                     <div class="slider-labels">
                         <span style="color: var(--text-muted);">Total Debt</span>
-                        <span class="gold-text" id="loanText" style="font-family: 'Outfit'; font-size: 18px;">₹5,00,000</span>
+                        <span class="gold-text" id="loanText" style="font-family: 'Outfit'; font-size: 20px;">₹5,00,000</span>
                     </div>
                     <input type="range" id="loanSlider" min="100000" max="1500000" step="50000" value="500000">
                 </div>
@@ -169,26 +240,26 @@
                 <div class="vs-item vs-red">
                     <div>
                         <div class="vs-title">Chaotic App Loans</div>
-                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Multiple dates, high stress</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Multiple dates, high stress</div>
                     </div>
-                    <div class="vs-val" style="color: var(--red);" id="oldEmi">₹28,500<span style="font-size: 14px; font-weight: 500; color: var(--text-muted);">/mo</span></div>
+                    <div class="vs-val" style="color: var(--red);" id="oldEmi">₹28,500<span style="font-size: 16px; font-weight: 500; color: var(--text-muted);">/mo</span></div>
                 </div>
                 <div class="vs-item vs-green">
                     <div>
                         <div class="vs-title" style="color: var(--green);">Homnivas 1-EMI</div>
-                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Normal interest, one date</div>
+                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Normal interest, one date</div>
                     </div>
-                    <div class="vs-val" style="color: var(--green);" id="newEmi">₹14,200<span style="font-size: 14px; font-weight: 500; color: var(--green);">/mo</span></div>
+                    <div class="vs-val" style="color: var(--green);" id="newEmi">₹14,200<span style="font-size: 16px; font-weight: 500; color: var(--green);">/mo</span></div>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="section container" id="apply">
-        <div class="bento" style="grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+        <div class="bento" style="grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
             
             <div>
-                <h2 style="font-size: 28px;">How We Free You</h2>
+                <h2 style="font-size: 36px;">How We Free You</h2>
                 <div class="timeline">
                     <div class="step">
                         <h3>1. Transparent Evaluation</h3>
@@ -205,20 +276,22 @@
                 </div>
             </div>
 
-            <div class="card" style="padding: 32px;">
-                <h2 style="font-size: 24px; margin-bottom: 8px;">Break the Trap</h2>
-                <p style="font-size: 14px; color: var(--text-muted);">100% Secure & Confidential.</p>
+            <div class="card" style="padding: 48px;">
+                <h2 style="font-size: 28px; margin-bottom: 12px;">Break the Trap</h2>
+                <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px;">100% Secure & Confidential.</p>
                 
-                <form class="tight-form" onsubmit="event.preventDefault();">
+                <form class="spacious-form" onsubmit="event.preventDefault();">
                     <input type="text" class="input-base full-width" placeholder="Full Name" required>
                     <input type="tel" class="input-base" placeholder="Phone Number" required>
-                    <select class="input-base" required style="appearance: none;">
+                    
+                    <select class="input-base" required style="appearance: none; background-color: #050505; color: white;">
                         <option value="" disabled selected>Debt Amount</option>
                         <option value="low">Under ₹1 Lakh</option>
                         <option value="mid">₹1L - ₹5L</option>
                         <option value="high">Above ₹5 Lakhs</option>
                     </select>
-                    <button type="submit" class="btn btn-gold full-width" style="margin-top: 8px;">Apply for Rescue</button>
+                    
+                    <button type="submit" class="btn btn-gold full-width" style="margin-top: 16px; width: 100%;">Apply for Rescue</button>
                 </form>
             </div>
             
@@ -236,8 +309,8 @@
         slider.oninput = function() {
             const val = parseInt(this.value);
             loanText.innerHTML = fmt.format(val);
-            oldEmi.innerHTML = fmt.format(val * 0.057) + '<span style="font-size: 14px; font-weight: 500; color: #8b8d91;">/mo</span>';
-            newEmi.innerHTML = fmt.format(val * 0.0284) + '<span style="font-size: 14px; font-weight: 500; color: #10b981;">/mo</span>';
+            oldEmi.innerHTML = fmt.format(val * 0.057) + '<span style="font-size: 16px; font-weight: 500; color: #8b8d91;">/mo</span>';
+            newEmi.innerHTML = fmt.format(val * 0.0284) + '<span style="font-size: 16px; font-weight: 500; color: #10b981;">/mo</span>';
         }
     </script>
 </body>
