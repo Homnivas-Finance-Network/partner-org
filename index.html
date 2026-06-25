@@ -13,6 +13,7 @@
         body { font-family: 'Inter', sans-serif; }
         .font-display { font-family: 'Outfit', sans-serif; }
     </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-deep text-white antialiased overflow-x-hidden">
 
@@ -60,13 +61,13 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <div class="md:col-span-2 bg-card border border-subtle rounded-2xl p-8 hover:border-gold/50 transition duration-300">
-                    <span class="text-4xl mb-6 block">📈</span>
+                    <span class="text-4xl mb-6 block"><i data-lucide="trending-up" class="text-gold mb-6"></i></span>
                     <h3 class="font-display text-2xl font-bold mb-3">The Good CIBIL Curse</h3>
                     <p class="text-slate-400 leading-relaxed">Because your CIBIL was excellent, banks threw money at you. What started as an emergency loan multiplied. Now, 5 different apps auto-debit your account, creating absolute chaos.</p>
                 </div>
                 
                 <div class="bg-red-500/5 border border-red-500/20 rounded-2xl p-8">
-                    <span class="text-4xl mb-6 block">🚫</span>
+                    <span class="text-4xl mb-6 block"><i data-lucide="ban" class="text-red-500 mb-6"></i></span>
                     <h3 class="font-display text-2xl font-bold mb-3 text-red-500">The Dead End</h3>
                     <p class="text-slate-400 leading-relaxed">Friends and family can't lend the lump sum needed. You are trapped.</p>
                 </div>
@@ -77,7 +78,7 @@
                 </div>
                 
                 <div class="md:col-span-2 bg-card border border-subtle rounded-2xl p-8 hover:border-gold/50 transition duration-300">
-                    <span class="text-4xl mb-6 block">🏦</span>
+                    <span class="text-4xl mb-6 block"><i data-lucide="landmark" class="text-gold mb-6"></i></span>
                     <h3 class="font-display text-2xl font-bold mb-3">0 Bank Balance</h3>
                     <p class="text-slate-400 leading-relaxed">The joy of payday lasts exactly 24 hours before the EMIs trigger. Your hard-earned salary belongs to the bank, not you.</p>
                 </div>
@@ -239,5 +240,6 @@
             if (event.target == document.getElementById('modal')) closeModal();
         }
     </script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
