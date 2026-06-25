@@ -4,57 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homnivas Partner Program | Escape the EMI Trap</title>
-    <meta name="description" content="Merge your high-interest emergency loans and credit card bills into one simple EMI.">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        deep: '#0a0f18',
-                        card: '#121824',
-                        subtle: '#1e2736',
-                        gold: '#eab308',
-                        'gold-hover': '#dca506',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'],
-                    }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { colors: { deep: '#0a0f18', card: '#121824', subtle: '#1e2736', gold: '#eab308' }}}}
     </script>
-    
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .range-slider { @apply w-full h-2 bg-deep border border-subtle rounded-lg appearance-none cursor-pointer; }
-            .range-slider::-webkit-slider-thumb { @apply appearance-none w-5 h-5 bg-gold rounded-full shadow-[0_0_10px_rgba(234,179,8,0.5)]; }
-        }
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Outfit', sans-serif; }
     </style>
 </head>
-<body class="bg-deep text-white font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-black">
+<body class="bg-deep text-white antialiased overflow-x-hidden">
 
     <header class="fixed top-0 w-full z-50 bg-deep/90 backdrop-blur-md border-b border-subtle">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="/" class="font-display font-extrabold text-2xl tracking-tight">
-                Homnivas<span class="text-gold">.</span>
-            </a>
+            <div class="flex flex-col">
+                <a href="/" class="font-display font-extrabold text-2xl tracking-tight">Homnivas<span class="text-gold">.</span></a>
+                <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Finance Network</span>
+            </div>
             <nav class="hidden md:flex gap-8">
                 <a href="#problem" class="text-sm font-medium text-slate-400 hover:text-gold transition">The Problem</a>
                 <a href="#calculator" class="text-sm font-medium text-slate-400 hover:text-gold transition">Impact</a>
                 <a href="#process" class="text-sm font-medium text-slate-400 hover:text-gold transition">How It Works</a>
             </nav>
-            <a href="#apply" class="bg-gold hover:bg-gold-hover text-black px-5 py-2.5 rounded-lg font-semibold text-sm transition">Apply Now</a>
+            <a href="#apply" class="bg-gold hover:bg-yellow-600 text-black px-5 py-2.5 rounded-lg font-semibold text-sm transition">Apply Now</a>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 pb-24">
-        
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-24">
         <section class="pt-40 pb-20 text-center max-w-3xl mx-auto">
             <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-subtle bg-black/20 text-slate-400 text-xs font-semibold uppercase tracking-wider mb-6">
                 <span class="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_#eab308]"></span>
@@ -198,59 +175,68 @@
                 
             </div>
         </section>
-    </main>
+
+        </main>
 
     <footer class="bg-[#070b12] border-t border-subtle pt-16 pb-8 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                 <div class="md:col-span-2">
-                    <a href="/" class="font-display font-extrabold text-2xl tracking-tight block mb-4">
-                        Homnivas<span class="text-gold">.</span>
-                    </a>
-                    <p class="text-slate-400 max-w-sm">We believe good people deserve a second chance at financial freedom. We partner with you to destroy predatory debt.</p>
+                    <div class="flex flex-col mb-4">
+                        <a href="/" class="font-display font-extrabold text-2xl tracking-tight">Homnivas<span class="text-gold">.</span></a>
+                        <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Finance Network</span>
+                    </div>
+                    <p class="text-slate-400 max-w-sm text-sm">We believe good people deserve a second chance at financial freedom. We partner with you to destroy predatory debt.</p>
                 </div>
-                
                 <div>
                     <h4 class="font-display font-bold text-lg mb-6">Program</h4>
-                    <ul class="space-y-3 text-slate-400">
+                    <ul class="space-y-3 text-slate-400 text-sm">
                         <li><a href="#problem" class="hover:text-gold transition">The Problem</a></li>
                         <li><a href="#process" class="hover:text-gold transition">How It Works</a></li>
                         <li><a href="#calculator" class="hover:text-gold transition">EMI Calculator</a></li>
                     </ul>
                 </div>
-                
                 <div>
                     <h4 class="font-display font-bold text-lg mb-6">Legal</h4>
-                    <ul class="space-y-3 text-slate-400">
-                        <li><a href="#" class="hover:text-gold transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-gold transition">Terms & Conditions</a></li>
-                        <li><a href="#" class="hover:text-gold transition">Contact Us</a></li>
+                    <ul class="space-y-3 text-slate-400 text-sm cursor-pointer">
+                        <li onclick="openModal('privacy')" class="hover:text-gold transition">Privacy Policy</li>
+                        <li onclick="openModal('terms')" class="hover:text-gold transition">Terms & Conditions</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-subtle pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-                <p>&copy; 2026 Homnivas Finance Networks. All Rights Reserved.</p>
-                <div class="flex gap-6">
-                    <a href="#" class="hover:text-white transition">LinkedIn</a>
-                    <a href="#" class="hover:text-white transition">Twitter</a>
-                </div>
+            <div class="border-t border-subtle pt-8 flex justify-between text-sm text-slate-500">
+                <p>&copy; 2026 Homnivas Finance Networks.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        const slider = document.getElementById("loanSlider");
-        const loanText = document.getElementById("loanText");
-        const oldEmi = document.getElementById("oldEmi");
-        const newEmi = document.getElementById("newEmi");
-        const fmt = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+    <div id="modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div class="bg-card border border-subtle w-full max-w-lg rounded-2xl p-8 max-h-[80vh] overflow-y-auto relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
+            <h2 id="modalTitle" class="font-display text-2xl font-bold mb-4"></h2>
+            <div id="modalContent" class="text-slate-400 text-sm leading-relaxed"></div>
+        </div>
+    </div>
 
-        slider.oninput = function() {
-            const val = parseInt(this.value);
-            loanText.innerHTML = fmt.format(val);
-            oldEmi.innerHTML = fmt.format(val * 0.057) + '<span class="text-base text-slate-500 font-medium">/mo</span>';
-            newEmi.innerHTML = fmt.format(val * 0.0284) + '<span class="text-base text-emerald-600 font-medium">/mo</span>';
+    <script>
+        const content = {
+            privacy: { title: "Privacy Policy", text: "Your data is 100% secure. We do not sell your personal financial information to third parties. We use industry-standard encryption for all data submitted." },
+            terms: { title: "Terms & Conditions", text: "By using the Homnivas Partner Program, you agree to our terms of service regarding loan consolidation and ethical lending practices." }
+        };
+
+        function openModal(type) {
+            document.getElementById('modalTitle').innerText = content[type].title;
+            document.getElementById('modalContent').innerText = content[type].text;
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+
+        // Close when clicking outside modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modal')) closeModal();
         }
     </script>
 </body>
