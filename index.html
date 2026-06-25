@@ -8,12 +8,12 @@
     <style>
         /* --- CORE SYSTEM & COLORS --- */
         :root {
-            --bg-deep: #000000;        /* True minimal black */
-            --bg-card: #0a0a0a;        /* Slightly elevated black */
+            --bg-deep: #000000;
+            --bg-card: #0a0a0a;
             --border-subtle: #1f1f1f;
             --border-hover: #333333;
             --gold: #eab308;
-            --text-main: #ffffff;      /* Forced pure white for visibility */
+            --text-main: #ffffff;
             --text-muted: #8b8d91;
             --red: #ef4444;
             --green: #10b981;
@@ -36,10 +36,9 @@
             font-weight: 700; 
             line-height: 1.2; 
             letter-spacing: -0.02em; 
-            color: var(--text-main); /* Explicitly set to fix rendering issue */
+            color: var(--text-main); 
         }
         
-        /* Generous Max-Width for breathing room on sides */
         .container { 
             width: 100%; 
             max-width: 1200px; 
@@ -47,7 +46,6 @@
             padding: 0 24px; 
         }
         
-        /* Huge section padding for vertical breathing room */
         .section { padding: 120px 0; }
         
         /* --- TYPOGRAPHY & TAGS --- */
@@ -102,25 +100,28 @@
             background: var(--bg-card); 
             border: 1px solid var(--border-subtle); 
             border-radius: 16px; 
-            padding: 40px; /* Increased padding for inner breathing room */
+            padding: 40px; 
             transition: border-color 0.2s;
         }
         .card:hover { border-color: var(--border-hover); }
 
         /* --- HERO --- */
         .hero { padding: 140px 0 80px; text-align: center; }
-        .hero h1 { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 24px; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); margin-bottom: 24px; }
         .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 48px; font-size: 18px; line-height: 1.7; }
 
-        /* --- BENTO GRID --- */
+        /* --- GRIDS --- */
         .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .bento-large { grid-column: span 2; }
+        
+        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+        .calc-wrapper { padding: 64px; }
+
         .bento h3 { font-size: 24px; margin-bottom: 12px; }
         .bento p { color: var(--text-muted); font-size: 16px; }
         .icon { font-size: 32px; margin-bottom: 24px; display: block; }
 
         /* --- CALCULATOR --- */
-        .calc-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 64px; }
         .slider-wrap { margin: 48px 0; }
         .slider-labels { display: flex; justify-content: space-between; margin-bottom: 16px; font-weight: 500; font-size: 16px; }
         
@@ -149,7 +150,7 @@
             border-radius: 12px; 
             background: #050505; 
             border: 1px solid var(--border-subtle); 
-            color: #ffffff; /* Explicit text color for inputs */
+            color: #ffffff; 
             font-family: 'Inter'; 
             font-size: 16px; 
             width: 100%; 
@@ -160,28 +161,28 @@
         .input-base:focus { border-color: var(--gold); }
         .full-width { grid-column: span 2; }
 
-        /* --- MOBILE OPTIMIZATION (THE FIX) --- */
+        /* --- BULLETPROOF MOBILE OPTIMIZATION --- */
         @media (max-width: 900px) {
             .section { padding: 80px 0; }
-            .hero { padding: 100px 0 60px; }
+            .hero { padding: 80px 0 40px; }
             
-            /* Collapse Grid with generous gaps */
-            .bento { grid-template-columns: 1fr; gap: 20px; }
+            /* Cleanly collapse all grids to single column */
+            .bento, .grid-2-col { grid-template-columns: 1fr; gap: 24px; }
             .bento-large { grid-column: span 1; }
             
-            /* Give cards breathing room on mobile */
+            /* Responsive Cards */
             .card { padding: 32px; }
-            .calc-wrapper { grid-template-columns: 1fr; gap: 48px; padding: 32px 24px; }
+            .calc-wrapper { padding: 32px 24px; }
             
-            /* Fix VS Stack alignment for small screens */
+            /* Fix Calculator stack */
             .vs-item { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; }
             
-            /* Collapse the Form */
+            /* Fix Form layout */
             .spacious-form { grid-template-columns: 1fr; gap: 16px; }
             .full-width { grid-column: span 1; }
             .btn { width: 100%; justify-content: center; }
             
-            /* Adjust timeline spacing */
+            /* Fix Timeline spacing */
             .timeline { padding-left: 24px; gap: 40px; }
             .step::before { left: -32px; }
         }
@@ -222,7 +223,7 @@
     </section>
 
     <section class="section container">
-        <div class="card calc-wrapper">
+        <div class="card grid-2-col calc-wrapper">
             <div>
                 <h2 style="font-size: 36px; margin-bottom: 16px;">See the Impact.</h2>
                 <p style="color: var(--text-muted); font-size: 18px;">Stop paying 5 lenders at 30%+ interest. Drag the slider to see how we cut your monthly burden.</p>
@@ -256,7 +257,7 @@
     </section>
 
     <section class="section container" id="apply">
-        <div class="bento" style="grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+        <div class="grid-2-col">
             
             <div>
                 <h2 style="font-size: 36px;">How We Free You</h2>
@@ -276,22 +277,22 @@
                 </div>
             </div>
 
-            <div class="card" style="padding: 48px;">
+            <div class="card">
                 <h2 style="font-size: 28px; margin-bottom: 12px;">Break the Trap</h2>
                 <p style="font-size: 16px; color: var(--text-muted); margin-bottom: 32px;">100% Secure & Confidential.</p>
                 
                 <form class="spacious-form" onsubmit="event.preventDefault();">
                     <input type="text" class="input-base full-width" placeholder="Full Name" required>
-                    <input type="tel" class="input-base" placeholder="Phone Number" required>
+                    <input type="tel" class="input-base full-width" placeholder="Phone Number" required>
                     
-                    <select class="input-base" required style="appearance: none; background-color: #050505; color: white;">
+                    <select class="input-base full-width" required style="appearance: none; background-color: #050505; color: white;">
                         <option value="" disabled selected>Debt Amount</option>
                         <option value="low">Under ₹1 Lakh</option>
                         <option value="mid">₹1L - ₹5L</option>
                         <option value="high">Above ₹5 Lakhs</option>
                     </select>
                     
-                    <button type="submit" class="btn btn-gold full-width" style="margin-top: 16px; width: 100%;">Apply for Rescue</button>
+                    <button type="submit" class="btn btn-gold full-width" style="margin-top: 16px;">Apply for Rescue</button>
                 </form>
             </div>
             
