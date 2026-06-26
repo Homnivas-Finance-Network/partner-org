@@ -12,6 +12,25 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         .font-display { font-family: 'Outfit', sans-serif; }
+        
+        /* Custom Slider Styling */
+        .range-slider { 
+            width: 100%; 
+            height: 6px; 
+            background: #0a0f18; 
+            border: 1px solid #1e2736; 
+            border-radius: 4px; 
+            appearance: none; 
+            cursor: pointer; 
+        }
+        .range-slider::-webkit-slider-thumb { 
+            appearance: none; 
+            width: 20px; 
+            height: 20px; 
+            background: #eab308; 
+            border-radius: 50%; 
+            box-shadow: 0 0 10px rgba(234,179,8,0.5); 
+        }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -32,8 +51,9 @@
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 pt-32 pb-24">
-        <section class="pt-40 pb-20 text-center max-w-3xl mx-auto">
+    <main class="max-w-7xl mx-auto px-6 pt-24 pb-24">
+        
+        <section class="pt-12 pb-16 text-center max-w-3xl mx-auto">
             <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-subtle bg-black/20 text-slate-400 text-xs font-semibold uppercase tracking-wider mb-6">
                 <span class="w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_#eab308]"></span>
                 Partner Program
@@ -46,7 +66,7 @@
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#apply" class="bg-gold hover:bg-gold-hover text-black px-8 py-4 rounded-xl font-semibold transition flex justify-center items-center">
+                <a href="#apply" class="bg-gold hover:bg-yellow-600 text-black px-8 py-4 rounded-xl font-semibold transition flex justify-center items-center">
                     Start Your Rescue
                 </a>
                 <a href="#calculator" class="bg-transparent border border-subtle hover:border-gold text-white hover:text-gold px-8 py-4 rounded-xl font-semibold transition flex justify-center items-center">
@@ -59,7 +79,6 @@
             <h2 class="font-display text-3xl md:text-4xl font-bold mb-10 text-center md:text-left">The Debt Trap Architecture</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
                 <div class="md:col-span-2 bg-card border border-subtle rounded-2xl p-8 hover:border-gold/50 transition duration-300">
                     <span class="text-4xl mb-6 block"><i data-lucide="trending-up" class="text-gold mb-6"></i></span>
                     <h3 class="font-display text-2xl font-bold mb-3">The Good CIBIL Curse</h3>
@@ -96,7 +115,7 @@
                         <span class="text-slate-400 font-medium">Total Debt</span>
                         <span id="loanText" class="font-display text-2xl font-bold text-gold">₹5,00,000</span>
                     </div>
-                    <input type="range" id="loanSlider" min="100000" max="1500000" step="50000" value="500000" class="range-slider">
+                    <input type="range" id="loanSlider" min="500000" max="5000000" step="100000" value="500000" class="range-slider">
                 </div>
 
                 <div class="flex flex-col gap-4">
@@ -168,7 +187,7 @@
                             <option value="high" class="bg-card text-white">Above ₹5 Lakhs</option>
                         </select>
                         
-                        <button type="submit" class="col-span-1 sm:col-span-2 w-full bg-gold hover:bg-gold-hover text-black font-semibold rounded-lg px-4 py-4 mt-2 transition">
+                        <button type="submit" class="col-span-1 sm:col-span-2 w-full bg-gold hover:bg-yellow-600 text-black font-semibold rounded-lg px-4 py-4 mt-2 transition">
                             Apply for Rescue
                         </button>
                     </form>
@@ -177,7 +196,7 @@
             </div>
         </section>
 
-        </main>
+    </main>
 
     <footer class="bg-[#070b12] border-t border-subtle pt-16 pb-8 px-6">
         <div class="max-w-7xl mx-auto">
@@ -220,6 +239,21 @@
     </div>
 
     <script>
+        const slider = document.getElementById("loanSlider");
+        const loanText = document.getElementById("loanText");
+        const oldEmi = document.getElementById("oldEmi");
+        const newEmi = document.getElementById("newEmi");
+        const fmt = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+
+        slider.oninput = function() {
+            const val = parseInt(this.value);
+            loanText.innerHTML = fmt.format(val);
+            oldEmi.innerHTML = fmt.format(val * 0.057) + '<span class="text-base text-slate-500 font-medium">/mo</span>';
+            newEmi.innerHTML = fmt.format(val * 0.0284) + '<span class="text-base text-emerald-600 font-medium">/mo</span>';
+        }
+    </script>
+    
+    <script>
         const content = {
             privacy: { title: "Privacy Policy", text: "Your data is 100% secure. We do not sell your personal financial information to third parties. We use industry-standard encryption for all data submitted." },
             terms: { title: "Terms & Conditions", text: "By using the Homnivas Partner Program, you agree to our terms of service regarding loan consolidation and ethical lending practices." }
@@ -235,11 +269,11 @@
             document.getElementById('modal').classList.add('hidden');
         }
 
-        // Close when clicking outside modal
         window.onclick = function(event) {
             if (event.target == document.getElementById('modal')) closeModal();
         }
     </script>
+
     <script>lucide.createIcons();</script>
 </body>
 </html>
